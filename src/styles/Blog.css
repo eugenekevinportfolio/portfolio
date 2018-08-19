@@ -1,0 +1,166 @@
+@media screen and (max-width: 809px) {
+  .moment-date p {
+    font-size: 13px;
+    margin: 0;
+  }
+
+  .moment h1 {
+    margin: 0;
+    margin-bottom: 15px;
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .start p {
+    font-size: 15px;
+  }
+
+  .blog {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .blog p {
+    text-align: center;
+  }
+
+  .blog-top-arrow {
+    width: 25px;
+    cursor: default;
+    position: fixed;
+    bottom: 30px;
+    left: calc(50% - 12.5px);
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+  }
+}
+
+@media screen and (min-width: 810px) {
+  .moment-date p {
+    font-size: 16px;
+    margin: 0;
+  }
+
+  .moment h1 {
+    margin: 0;
+    margin-bottom: 15px;
+    font-size: 35px;
+    text-align: center;
+  }
+
+  .blog-top-arrow {
+    width: 25px;
+    cursor: default;
+    position: fixed;
+    top: 100px;
+    left: 257px;
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+  }
+}
+
+.blog {
+  display: flex;
+  flex: 1;
+}
+
+.moments-scroll {
+  position: absolute;
+  transition: all 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+  width: 330px;
+}
+
+.moments-container {
+  width: 330px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  transition: all 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+  z-index: 100;
+}
+.start {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.start p {
+  margin: 0;
+}
+
+.moment {
+  padding: 25px;
+  border: solid 3px black;
+  box-sizing: border-box;
+  width: 100%;
+  margin-bottom: 15px;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.moment-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.moment p {
+  margin: 0;
+  font-size: 15px;
+  text-align: justify;
+}
+
+.moment-date {
+  display: inline-block;
+  background-color: white;
+  padding: 0px 5px;
+  position: relative;
+  top: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+.play-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  background-color: black;
+  margin-right: 13px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.play {
+  width: 11px;
+}
+
+.pictures-control {
+  position: fixed;
+  right: 35px;
+  top: 155px;
+  z-index: 1000;
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition-delay: 0.8s;
+}
+
+#pictures-left-arrow {
+  margin-right: 20px;
+}
+
+.pictures-horizontal-arrow {
+  height: 25px;
+  transition: all 0.3s ease-in-out;
+}
