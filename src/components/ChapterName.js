@@ -43,13 +43,13 @@ class ChapterName extends Component {
             const content = document.getElementsByClassName("video-container");
             for (let i = 0; i < content.length; i++) {
               if (content[i].getBoundingClientRect().bottom < 0 || content[i].getBoundingClientRect().top > window_dimensions.height) {
-                content[i].style.visibility = "hidden";
+                // content[i].style.visibility = "hidden";
                 if (content[i].children[0].children[0].nodeName === "VIDEO") {
                   content[i].children[0].children[0].pause();
                 }
               }
               else {
-                content[i].style.visibility = "";
+                // content[i].style.visibility = "";
                 if (content[i].children[0].children[0].nodeName === "VIDEO") {
                   content[i].children[0].children[0].play();
                 }
