@@ -77,7 +77,7 @@ const initialState = {
           src: kago,
           title: "Calm Park",
           location: "Kagoshima, Japan",
-          description: "This is Kagoshima, the first city of Kyushu we visited. This was my spot, a park located in the middle of the city, and surrounded by mountains."
+          description: "This is Kagoshima, the first city of Kyushu I visited. This was my spot, a park located in the middle of the city, and surrounded by mountains."
         },
         [uniqueId('picture-')]: {
           src: ibusuki,
