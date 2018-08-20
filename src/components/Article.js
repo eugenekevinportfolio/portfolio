@@ -41,8 +41,7 @@ import universal_contacts from '../videos/Contact.mp4';
 class Article extends Component {
   componentDidMount() {
     const { window_dimensions } = this.props;
-    this.handleScroll = this.handleScroll.bind(this);
-    window.addEventListener("wheel", this.handleScroll);
+    this.last_scroll_position = 0;
 
     // Optimization for videos and universal_messages
     const content = document.getElementsByClassName("video-container");
@@ -64,68 +63,7 @@ class Article extends Component {
 
   componentWillUnmount() {
     const { chapters } = this.props;
-    window.removeEventListener("wheel", this.handleScroll);
-    this.handleScroll = undefined;
     this.props.selectChapter(Object.keys(chapters)[0]);
-  }
-
-  handleScroll(e) {
-    const { navbar_hidden, chapters, current_chapter, window_dimensions } = this.props;
-
-    if (e.deltaY > 10) {
-      !navbar_hidden && this.props.hideNavbar(true);
-    }
-    else if (e.deltaY < -15) {
-      navbar_hidden && this.props.hideNavbar(false);
-    }
-
-    // Optimization for videos and universal_messages
-    const content = document.getElementsByClassName("video-container");
-    for (let i = 0; i < content.length; i++) {
-      if (content[i].getBoundingClientRect().bottom < 0 || content[i].getBoundingClientRect().top > window_dimensions.height) {
-        // content[i].style.visibility = "hidden";
-        if (content[i].children[0].children[0].nodeName === "VIDEO") {
-          content[i].children[0].children[0].pause();
-        }
-      }
-      else {
-        // content[i].style.visibility = "";
-        if (content[i].children[0].children[0].nodeName === "VIDEO") {
-          content[i].children[0].children[0].play();
-        }
-      }
-    }
-
-    if (window_dimensions.isDesktop) {
-      const article_titles = document.getElementsByClassName("article-title");
-      let distances_from_top = [], positive_values = []
-      for (let i = 0; i < article_titles.length; i++) {
-        distances_from_top[i] = 135 - article_titles[i].getBoundingClientRect().top;
-        if (distances_from_top[i] >= 0) {
-          positive_values[i] = distances_from_top[i];
-        }
-      }
-
-      // If every distance is negative
-      if (Math.max(...distances_from_top) < 0) {
-        const index_to_select = distances_from_top.indexOf(Math.max(...distances_from_top));
-        const id_to_select = article_titles[index_to_select].id;
-        if (id_to_select !== current_chapter) {
-          this.props.selectChapter(id_to_select);
-          const position = chapters[id_to_select].position;
-          this.props.moveSelector(position);
-        }
-      }
-      else {
-        const index_to_select = positive_values.indexOf(Math.min(...positive_values));
-        const id_to_select = article_titles[index_to_select].id;
-        if (id_to_select !== current_chapter) {
-          this.props.selectChapter(id_to_select);
-          const position = chapters[id_to_select].position;
-          this.props.moveSelector(position);
-        }
-      }
-    }
   }
 
   backdownStyle() {
@@ -194,6 +132,68 @@ class Article extends Component {
     }
   }
 
+  handleScroll(e) {
+    const { navbar_hidden, chapters, current_chapter, window_dimensions } = this.props;
+    const deltaY = e.target.scrollTop - this.last_scroll_position;
+
+    if (deltaY > 10) {
+      !navbar_hidden && this.props.hideNavbar(true);
+    }
+    else if (deltaY < -15) {
+      navbar_hidden && this.props.hideNavbar(false);
+    }
+
+    // Optimization for videos and universal_messages
+    const content = document.getElementsByClassName("video-container");
+    for (let i = 0; i < content.length; i++) {
+      if (content[i].getBoundingClientRect().bottom < 0 || content[i].getBoundingClientRect().top > window_dimensions.height) {
+        // content[i].style.visibility = "hidden";
+        if (content[i].children[0].children[0].nodeName === "VIDEO") {
+          content[i].children[0].children[0].pause();
+        }
+      }
+      else {
+        // content[i].style.visibility = "";
+        if (content[i].children[0].children[0].nodeName === "VIDEO") {
+          content[i].children[0].children[0].play();
+        }
+      }
+    }
+
+    if (window_dimensions.isDesktop) {
+      const article_titles = document.getElementsByClassName("article-title");
+      let distances_from_top = [], positive_values = []
+      for (let i = 0; i < article_titles.length; i++) {
+        distances_from_top[i] = 135 - article_titles[i].getBoundingClientRect().top;
+        if (distances_from_top[i] >= 0) {
+          positive_values[i] = distances_from_top[i];
+        }
+      }
+
+      // If every distance is negative
+      if (Math.max(...distances_from_top) < 0) {
+        const index_to_select = distances_from_top.indexOf(Math.max(...distances_from_top));
+        const id_to_select = article_titles[index_to_select].id;
+        if (id_to_select !== current_chapter) {
+          this.props.selectChapter(id_to_select);
+          const position = chapters[id_to_select].position;
+          this.props.moveSelector(position);
+        }
+      }
+      else {
+        const index_to_select = positive_values.indexOf(Math.min(...positive_values));
+        const id_to_select = article_titles[index_to_select].id;
+        if (id_to_select !== current_chapter) {
+          this.props.selectChapter(id_to_select);
+          const position = chapters[id_to_select].position;
+          this.props.moveSelector(position);
+        }
+      }
+    }
+    this.last_scroll_position = e.target.scrollTop;
+
+  }
+
   render() {
     const { navbar_hidden, dark_mode, window_dimensions } = this.props;
     const back_down = dark_mode ? light_back_down : dark_back_down;
@@ -203,6 +203,7 @@ class Article extends Component {
     return (
       <div
         id="article-frame"
+        onScroll={(e) => this.handleScroll(e)}
         className="article-frame">
         {window_dimensions.isDesktop ?
           <div
