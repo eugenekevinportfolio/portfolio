@@ -9,7 +9,9 @@ class Video extends Component {
     return(
       <div className="video-container">
         <div className="video-box">
-          <video playsInline src={src} loop className="video" />
+          <video playsInline src={src} loop className="video">
+            <source src={src} />
+          </video>
         </div>
         <p
           style={dark_mode ? {borderColor: "white", color: "white"} : {}}
