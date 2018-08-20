@@ -65,6 +65,7 @@ class MobileNavBar extends Component {
         return {
           opacity: 0,
           width: 0,
+          position: "absolute",
           pointerEvents: "none"
         }
       }
@@ -81,6 +82,7 @@ class MobileNavBar extends Component {
         return {
           opacity: 0,
           width: 0,
+          position: "absolute",
           pointerEvents: "none"
         }
       }
