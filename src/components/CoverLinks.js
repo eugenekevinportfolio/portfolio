@@ -55,7 +55,7 @@ class CoverLinks extends Component {
       if (ready) {
         if (reddit) {
           return {
-            left: "calc(50% - 152.375px)",
+            left: "calc(50% - 128.815px)",
             opacity: 0,
           }
         }
@@ -68,7 +68,7 @@ class CoverLinks extends Component {
       }
       else {
         return {
-          left: "calc(50% - 117.71px)",
+          left: "calc(50% - 111.21px)",
           opacity: 0
         }
       }
@@ -77,7 +77,7 @@ class CoverLinks extends Component {
       if (ready) {
         if (reddit) {
           return {
-            left: "calc(50% - 152.375px)"
+            left: "calc(50% - 135.315px)"
           }
         }
         else {
@@ -88,7 +88,7 @@ class CoverLinks extends Component {
       }
       else {
         return {
-          left: "calc(50% - 117.71px)"
+          left: "calc(50% - 111.21px)"
         }
       }
     }
@@ -131,7 +131,7 @@ class CoverLinks extends Component {
             onClick={() => { this.props.openConcept(true) }}
             style={this.readStyle()}
             className="read-story">
-            READ THE STORY
+            CASE STUDY
           </div>
           :
           <div
@@ -140,9 +140,9 @@ class CoverLinks extends Component {
             COMING SOON
           </div>
         }
-        <div
+        {/* <div
           style={dark_mode ? {backgroundColor: "white"}: {}}
-          className="cover-partition" />
+          className="cover-partition" /> */}
         <a
           href={medium}
           target="_blank">
