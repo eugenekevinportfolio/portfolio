@@ -89,7 +89,7 @@ class InvisibleHome extends Component {
     const current_intro_index = intro_keys.indexOf(intro_focus);
 
     if (canPressKey) {
-      if (e.deltaY > 45 && intros[intro_keys[current_intro_index + 1]]) {
+      if (e.deltaY > 30 && intros[intro_keys[current_intro_index + 1]]) {
         this.props.introFocus(intro_keys[current_intro_index + 1]);
         this.setState({
           canPressKey: false
@@ -103,7 +103,7 @@ class InvisibleHome extends Component {
           !home_finished && this.props.finishHome();
         }
       }
-      else if (e.deltaY < -45 && intros[intro_keys[current_intro_index - 1]]) {
+      else if (e.deltaY < -30 && intros[intro_keys[current_intro_index - 1]]) {
         this.props.introFocus(intro_keys[current_intro_index - 1]);
         this.setState({
           canPressKey: false
