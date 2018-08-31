@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import NavBar from './NavBar.js';
 import MobileNavBar from './MobileNavBar.js';
 import Home from './Home.js';
+import HomeTest from './HomeTest.js';
 import Concepts from './Concepts.js';
 import Article from './Article.js';
 import Blog from './Blog.js';
@@ -118,7 +119,8 @@ class App extends Component {
     switch (current_tab) {
       case "home":
         return (
-          <Home />
+          // <Home />
+          <HomeTest />
         );
       case "blog":
       if (window_dimensions.isDesktop) {

@@ -14,48 +14,64 @@
 }
 
 @media screen and (max-width: 449px) {
-  .home-center p {
+  .home-center p, .intro {
     font-size: 26px;
   }
 
   .download {
     transform: scale(0.8);
   }
+
+  .home {
+    padding: 360px 20px 280px;
+  }
 }
 
 @media screen and (min-width: 450px) and (max-width: 699px) {
-  .home-center p {
+  .home-center p, .intro {
     font-size: 30px;
   }
 
   .download {
     transform: scale(0.85);
   }
+
+  .home {
+    padding: 360px 20px 280px;
+  }
 }
 
 @media screen and (min-width: 700px) and (max-width: 999px) {
-  .home-center p {
+  .home-center p, .intro {
     font-size: 40px;
   }
 
   .download {
     transform: scale(0.9);
   }
-}
 
-@media screen and (min-width: 1000px) {
-  .home-center p {
-    font-size: 55px;
+  .home {
+    padding: 340px 20px 280px;
   }
 }
 
-.home {
+@media screen and (min-width: 1000px) {
+  .home-center p, .intro {
+    font-size: 55px;
+  }
+
+  .home {
+    padding: 300px 50px 280px;
+  }
+}
+
+/* .home {
   display: flex;
   flex-direction: column;
   flex: 1;
   justify-content: center;
   padding: 0 20px;
-}
+} */
 
 .home-center {
   display: flex;
@@ -129,4 +145,65 @@
   left: calc(50% - 113.9px);
   transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
   text-decoration: none;
+}
+
+/* TEST */
+
+.home {
+  overflow: auto;
+  animation-duration: 0.6s;
+  animation-name: slidein;
+  animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+@keyframes slidein {
+  from {
+    opacity: 0;
+    margin-top: 200px;
+  }
+
+  to {
+    margin-top: 0px;
+  }
+}
+
+.intro {
+  margin: 0;
+  margin-bottom: 10px;
+  transition: all 0.15s ease-in-out;
+  opacity: 0;
+}
+
+.scroll-bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 20px;
+  left: calc(50% - 75.695px);
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.scroll-bottom p {
+  margin-bottom: 7px;
+}
+
+.scroll-bottom img {
+  animation-duration: 1.5s;
+  animation-name: bounce;
+  animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(0px);
+  }
+
+  to {
+    transform: translateY(10px);
+  }
 }

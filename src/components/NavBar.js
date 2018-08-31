@@ -133,7 +133,7 @@ class NavBar extends Component {
               style={dark_mode ? {width: '19px'} : {}}
               src={dark_mode_icon} className="sun" alt="sun" />
           </div>
-          {!destroyedSkip &&
+          {/* {!destroyedSkip &&
             <div
               onClick={() => {
                 this.props.skipAllIntros();
@@ -150,7 +150,7 @@ class NavBar extends Component {
                 SKIP
               </p>
             </div>
-          }
+          } */}
         </div>
       </div>
     );

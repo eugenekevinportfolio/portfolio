@@ -264,7 +264,7 @@ class MobileNavBar extends Component {
             className="burger-container">
             <Burger open={burgerOpen} />
           </div>
-          {!destroyedSkip &&
+          {/* {!destroyedSkip &&
             <div
               onClick={() => {
                 this.props.skipAllIntros();
@@ -281,7 +281,7 @@ class MobileNavBar extends Component {
                 SKIP
               </p>
             </div>
-          }
+          } */}
         </div>
         <div
           onClick={() => this.props.openBurger(false)}
