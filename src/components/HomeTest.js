@@ -10,6 +10,8 @@ import {
 } from '../actions/index.js';
 import dark_down_arrow from '../img/DownArrow.png';
 import light_down_arrow from '../img/LightDownArrow.png';
+import resume from '../img/Resume.pdf';
+import dark_resume from '../img/DarkResume.pdf';
 
 class HomeTest extends Component {
   renderIntro() {
@@ -42,15 +44,66 @@ class HomeTest extends Component {
   }
 
   scrollStyle() {
-    const { intros, intro_focus } = this.props;
+    const { intros, intro_focus, home_finished } = this.props;
     const intros_keys = Object.keys(intros);
 
-    if (intro_focus === intros_keys[intros_keys.length - 1]) {
-      return {
-        transform: "scale(0.8)",
-        opacity: 0,
-        pointerEvents: "none",
-        cursor: "default"
+    if (!home_finished) {
+      if (intro_focus === intros_keys[intros_keys.length - 1]) {
+        return {
+          transform: "scale(0.8)",
+          opacity: 0,
+          pointerEvents: "none",
+          cursor: "default"
+        }
+      }
+    }
+    else {
+      if (intro_focus === intros_keys[intros_keys.length - 1]) {
+        return {
+          transform: "scale(0.8)",
+          opacity: 0,
+          pointerEvents: "none",
+          cursor: "default",
+          bottom: 80
+        }
+      }
+      else {
+        return {
+          bottom: 80
+        }
+      }
+    }
+  }
+
+  downloadStyle() {
+    const { home_finished, dark_mode } = this.props;
+
+    if (dark_mode) {
+      if (!home_finished) {
+        return {
+          transform: "scale(0.7)",
+          opacity: 0,
+          cursor: "default",
+          backgroundColor: "white",
+          color: "black",
+          pointerEvents: "none"
+        }
+      }
+      else {
+        return {
+          backgroundColor: "white",
+          color: "black"
+        }
+      }
+    }
+    else {
+      if (!home_finished) {
+        return {
+          transform: "scale(0.7)",
+          opacity: 0,
+          cursor: "default",
+          pointerEvents: "none"
+        }
       }
     }
   }
@@ -78,6 +131,13 @@ class HomeTest extends Component {
           </p>
           <img className="arrow" src={down_arrow}/>
         </div>
+        <a
+          href={dark_mode ? dark_resume : resume}
+          target="_blank"
+          style={this.downloadStyle()}
+          className="download">
+          DOWNLOAD MY RESUME
+        </a>
       </div>
     );
   }

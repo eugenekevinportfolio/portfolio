@@ -17,7 +17,7 @@ const initialState = {
     has_focused: false
   },
   [uniqueId('intro-')]: {
-    text: "Click the SKIP button on the top right corner to look at my projects and blog.",
+    text: "Scroll to the bottom to skip this intro and look at my projects and blog.",
     central_position: 0,
     has_focused: false
   },

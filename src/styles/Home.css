@@ -23,7 +23,7 @@
   }
 
   .home {
-    padding: 360px 20px 280px;
+    padding: 320px 20px 280px;
   }
 }
 
@@ -145,6 +145,7 @@
   left: calc(50% - 113.9px);
   transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
   text-decoration: none;
+  transition-delay: 0.5s;
 }
 
 /* TEST */
@@ -181,10 +182,12 @@
   justify-content: center;
   align-items: center;
   position: fixed;
-  bottom: 20px;
+  bottom: 10px;
   left: calc(50% - 75.695px);
   cursor: pointer;
-  transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1),
+  opacity 0.5s cubic-bezier(0.645, 0.045, 0.355, 1),
+  bottom 0.1s cubic-bezier(0.645, 0.045, 0.355, 1) 0.5s;
 }
 
 .scroll-bottom p {

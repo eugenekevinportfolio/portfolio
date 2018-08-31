@@ -113,7 +113,6 @@ class Home extends Component {
         }
       }
     }
-
   }
 
   render() {
@@ -260,7 +259,7 @@ class Home extends Component {
           }
         </div>
         <a
-          href={home_finished ? (dark_mode ? dark_resume : resume) : "false"}
+          href={dark_mode ? dark_resume : resume}
           target="_blank"
           style={this.downloadStyle()}
           className="download">

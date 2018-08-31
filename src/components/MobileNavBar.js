@@ -61,14 +61,14 @@ class MobileNavBar extends Component {
           }
         }
       }
-      else {
-        return {
-          opacity: 0,
-          width: 0,
-          position: "absolute",
-          pointerEvents: "none"
-        }
-      }
+      // else {
+      //   return {
+      //     opacity: 0,
+      //     width: 0,
+      //     position: "absolute",
+      //     pointerEvents: "none"
+      //   }
+      // }
     }
     else {
       if (home_finished) {
@@ -78,14 +78,14 @@ class MobileNavBar extends Component {
           }
         }
       }
-      else {
-        return {
-          opacity: 0,
-          width: 0,
-          position: "absolute",
-          pointerEvents: "none"
-        }
-      }
+      // else {
+      //   return {
+      //     opacity: 0,
+      //     width: 0,
+      //     position: "absolute",
+      //     pointerEvents: "none"
+      //   }
+      // }
     }
   }
 
