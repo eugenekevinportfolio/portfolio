@@ -27,9 +27,15 @@ class IntroTest extends Component {
           color: "white"
         }
       }
-      else if (Math.abs(id.substring(6) - intro_focus.substring(6)) === 1) {
+      else if (id.substring(6) - intro_focus.substring(6) === 1) {
         return {
           opacity: 0.1,
+          color: "white"
+        }
+      }
+      else if (id.substring(6) - intro_focus.substring(6) === -1) {
+        return {
+          opacity: 0.02,
           color: "white"
         }
       }
@@ -46,9 +52,14 @@ class IntroTest extends Component {
           opacity: 1
         }
       }
-      else if (Math.abs(id.substring(6) - intro_focus.substring(6)) === 1) {
+      else if (id.substring(6) - intro_focus.substring(6) === 1) {
         return {
           opacity: 0.1
+        }
+      }
+      else if (id.substring(6) - intro_focus.substring(6) === -1) {
+        return {
+          opacity: 0.04,
         }
       }
       else if (id.substring(6) - intro_focus.substring(6) === 2) {
