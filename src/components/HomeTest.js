@@ -64,45 +64,6 @@ class HomeTest extends Component {
           opacity: 0,
           pointerEvents: "none",
           cursor: "default",
-          bottom: 80
-        }
-      }
-      else {
-        return {
-          bottom: 80
-        }
-      }
-    }
-  }
-
-  downloadStyle() {
-    const { home_finished, dark_mode } = this.props;
-
-    if (dark_mode) {
-      if (!home_finished) {
-        return {
-          transform: "scale(0.7)",
-          opacity: 0,
-          cursor: "default",
-          backgroundColor: "white",
-          color: "black",
-          pointerEvents: "none"
-        }
-      }
-      else {
-        return {
-          backgroundColor: "white",
-          color: "black"
-        }
-      }
-    }
-    else {
-      if (!home_finished) {
-        return {
-          transform: "scale(0.7)",
-          opacity: 0,
-          cursor: "default",
-          pointerEvents: "none"
         }
       }
     }
@@ -131,13 +92,6 @@ class HomeTest extends Component {
           </p>
           <img className="arrow" src={down_arrow}/>
         </div>
-        <a
-          href={dark_mode ? dark_resume : resume}
-          target="_blank"
-          style={this.downloadStyle()}
-          className="download">
-          DOWNLOAD MY RESUME
-        </a>
       </div>
     );
   }

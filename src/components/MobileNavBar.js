@@ -48,17 +48,15 @@ class MobileNavBar extends Component {
   burgerContainerStyle() {
     const { dark_mode, home_finished, burgerOpen } = this.props;
     if (dark_mode) {
-      if (home_finished) {
-        if (burgerOpen) {
-          return {
-            // borderLeft: 'solid 1px rgba(255,255,255,0.2)',
-            backgroundColor: "white"
-          }
+      if (burgerOpen) {
+        return {
+          // borderLeft: 'solid 1px rgba(255,255,255,0.2)',
+          backgroundColor: "white"
         }
-        else {
-          return {
-            // borderLeft: 'solid 1px rgba(255,255,255,0.2)',
-          }
+      }
+      else {
+        return {
+          // borderLeft: 'solid 1px rgba(255,255,255,0.2)',
         }
       }
       // else {
@@ -71,11 +69,9 @@ class MobileNavBar extends Component {
       // }
     }
     else {
-      if (home_finished) {
-        if (burgerOpen) {
-          return {
-            backgroundColor: 'black'
-          }
+      if (burgerOpen) {
+        return {
+          backgroundColor: 'black'
         }
       }
       // else {

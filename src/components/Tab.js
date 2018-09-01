@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import { bindActionCreators } from 'redux';
 import { selectTab } from '../actions/index.js';
+import resume from '../img/Resume.pdf';
+import dark_resume from '../img/DarkResume.pdf';
 
 class Tab extends Component {
   selectorStyle() {
@@ -43,20 +45,37 @@ class Tab extends Component {
 
   render() {
     const { text, id, dark_mode, current_tab } = this.props;
-    return (
-      <div
-        style={this.selectorStyle()}
-        className="tab"
-        onClick={() => {
-          this.props.selectTab(id)
-        }}>
+    if (id === "resume") {
+      return (
+        <a
+          href={dark_mode ? dark_resume : resume}
+          target="_blank"
+          style={this.selectorStyle()}
+          className="tab">
           <p style={(dark_mode && id !== current_tab) ? {
             color: "white"
           } : {}}>
-            {text.toUpperCase()}
+          {text.toUpperCase()}
           </p>
-      </div>
-    );
+        </a>
+      );
+    }
+    else {
+      return (
+        <div
+          style={this.selectorStyle()}
+          className="tab"
+          onClick={() => {
+            this.props.selectTab(id)
+          }}>
+          <p style={(dark_mode && id !== current_tab) ? {
+            color: "white"
+          } : {}}>
+          {text.toUpperCase()}
+          </p>
+        </div>
+      );
+    }
   }
 }
 

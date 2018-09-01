@@ -10,6 +10,9 @@ const initialState = {
   },
   blog: {
     text: "Blog",
+  },
+  resume: {
+    text: "resume",
   }
 };
 

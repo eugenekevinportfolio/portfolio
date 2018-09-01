@@ -3,12 +3,14 @@ import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import { bindActionCreators } from 'redux';
 import { selectTab } from '../actions/index.js';
+import resume from '../img/Resume.pdf';
+import dark_resume from '../img/DarkResume.pdf';
 
 class MobileTab extends Component {
   mobileTabStyle() {
-    const { id, current_tab, open, dark_mode } = this.props;
-    const menuArray = ["home", "playground", "concepts", "blog"];
-    const index = menuArray.indexOf(id);
+    const { id, current_tab, open, dark_mode, menu_tabs } = this.props;
+    const menu_tabs_keys = Object.keys(menu_tabs);
+    const index = menu_tabs_keys.indexOf(id);
 
     if (dark_mode) {
       if (open) {
@@ -60,20 +62,34 @@ class MobileTab extends Component {
   }
 
   render() {
-    const { text, id } = this.props;
-    return (
-      <div
-        style={this.mobileTabStyle()}
-        className="mobile-tab"
-        onClick={() => {
-          this.props.selectTab(id)
-        }}
-      >
+    const { text, id, dark_mode } = this.props;
+    if (id === "resume") {
+      return (
+        <a
+          href={dark_mode ? dark_resume : resume}
+          target="_blank"
+          style={this.mobileTabStyle()}
+          className="mobile-tab">
           <p>
             {text.toUpperCase()}
           </p>
-      </div>
-    );
+        </a>
+      );
+    }
+    else {
+      return (
+        <div
+          style={this.mobileTabStyle()}
+          className="mobile-tab"
+          onClick={() => {
+            this.props.selectTab(id)
+          }}>
+          <p>
+            {text.toUpperCase()}
+          </p>
+        </div>
+      );
+    }
   }
 }
 
@@ -86,13 +102,16 @@ function matchDispatchToProps(dispatch) {
 const selector = createSelector(
   state => state['current_tab'],
   state => state['dark_mode'],
+  state => state['menu_tabs'],
   (
     current_tab,
-    dark_mode
+    dark_mode,
+    menu_tabs
 ) => {
     return  {
       current_tab,
-      dark_mode
+      dark_mode,
+      menu_tabs
     };
   }
 );

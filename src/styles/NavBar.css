@@ -90,6 +90,11 @@
   display: flex;
 }
 
+.tabs a, .backdrop a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .sun {
   width: 26.5px;
 }
