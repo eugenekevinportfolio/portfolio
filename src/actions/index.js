@@ -169,6 +169,15 @@ export const selectMoment = (id) => {
   );
 }
 
+export const selectCover = (id) => {
+  return(
+    {
+      type: "SELECT_COVER",
+      id
+    }
+  );
+}
+
 export const fullScreenImage = (src, payload) => {
   return(
     {

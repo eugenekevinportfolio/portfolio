@@ -74,7 +74,11 @@
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
-  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
   background-color: white;
   transition: background-color 0.3s ease-in-out, box-shadow 0.4s ease-in-out, transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
   box-shadow: rgba(0,0,0,0) 0px 0px 0px;

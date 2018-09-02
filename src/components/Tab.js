@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import { selectTab } from '../actions/index.js';
 import resume from '../img/Resume.pdf';
 import dark_resume from '../img/DarkResume.pdf';
+import { introFocus } from '../actions/index.js';
 
 class Tab extends Component {
   selectorStyle() {
@@ -44,7 +45,7 @@ class Tab extends Component {
   }
 
   render() {
-    const { text, id, dark_mode, current_tab } = this.props;
+    const { text, id, dark_mode, current_tab, intros } = this.props;
     if (id === "resume") {
       return (
         <a
@@ -67,6 +68,16 @@ class Tab extends Component {
           className="tab"
           onClick={() => {
             this.props.selectTab(id)
+            if (id === "home" && current_tab === "home") {
+              const first_intro_dom = document.getElementById("first-intro");
+              this.props.introFocus(Object.keys(intros)[0]);
+              first_intro_dom.scrollIntoView({
+                'behavior': "smooth"
+              });
+            }
+            else if (id === "home" && current_tab !== "home") {
+              this.props.introFocus(Object.keys(intros)[0]);
+            }
           }}>
           <p style={(dark_mode && id !== current_tab) ? {
             color: "white"
@@ -81,7 +92,8 @@ class Tab extends Component {
 
 function matchDispatchToProps(dispatch) {
   return bindActionCreators({
-    selectTab
+    selectTab,
+    introFocus
   }, dispatch)
 }
 
@@ -89,15 +101,18 @@ const selector = createSelector(
   state => state['current_tab'],
   state => state['dark_mode'],
   state => state['home_finished'],
+  state => state['intros'],
   (
     current_tab,
     dark_mode,
-    home_finished
+    home_finished,
+    intros
 ) => {
     return  {
       current_tab,
       dark_mode,
-      home_finished
+      home_finished,
+      intros
     };
   }
 );

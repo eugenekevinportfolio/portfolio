@@ -183,14 +183,15 @@ class App extends Component {
     const arrow = dark_mode ? light_back : back;
     return (
       <div
+        id="app"
         style={dark_mode ? {backgroundColor: "#262626"} : {}}
         className="app">
         {window_dimensions.isDesktop ?
           <NavBar />:
           <MobileNavBar />
         }
-        <div className="below-nav">
-          {window_dimensions.isDesktop &&  current_tab !== "concepts" &&
+        {/* <div className="below-nav"> */}
+          {/* {window_dimensions.isDesktop &&  current_tab !== "concepts" &&
             <div className="left-below-nav">
               <p
                 style={this.leftStyle()}
@@ -207,12 +208,12 @@ class App extends Component {
                 <img src={arrow} className="back" alt="back" />
               </div>
             </div>
-          }
-          <div className="module-container">
+          } */}
+          {/* <div className="module-container"> */}
             {this.renderModule()}
             {current_tab === "concepts" && desync_concept_open && <Article />}
-          </div>
-        </div>
+          {/* </div> */}
+        {/* </div> */}
       </div>
     );
   }

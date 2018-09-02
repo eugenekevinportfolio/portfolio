@@ -25,8 +25,22 @@ class HomeTest extends Component {
     )
   }
 
+  componentDidMount() {
+    // this.pressKey = this.pressKey.bind(this);
+    // window.addEventListener("keydown", this.pressKey);
+    this.handleScroll = this.handleScroll.bind(this);
+    window.addEventListener("wheel", this.handleScroll);
+  }
+
+  componentWillUnmount() {
+    // window.removeEventListener("keydown", this.pressKey);
+    // this.pressKey = undefined;
+    window.removeEventListener("wheel", this.handleScroll);
+    this.handleScroll = undefined;
+  }
+
   handleScroll() {
-    const { window_dimensions, intros } = this.props;
+    const { window_dimensions, intros, intro_focus } = this.props;
     const page_center = window_dimensions.height/2 + 50;
     const intros_array = document.getElementsByClassName("intro");
     const intros_center = [];
@@ -40,7 +54,7 @@ class HomeTest extends Component {
     const minimum_distance = Math.min(...distance_to_center);
     const index_of_min = distance_to_center.indexOf(minimum_distance);
     const id_to_focus = Object.keys(intros)[index_of_min];
-    this.props.introFocus(id_to_focus);
+    id_to_focus !== intro_focus && this.props.introFocus(id_to_focus);
   }
 
   scrollStyle() {
@@ -70,18 +84,29 @@ class HomeTest extends Component {
   }
 
   render() {
-    const { home_finished, dark_mode } = this.props;
+    const { home_finished, dark_mode, intros, window_dimensions } = this.props;
     const down_arrow = dark_mode ? light_down_arrow : dark_down_arrow;
+    const intros_keys = Object.keys(intros);
+    const last_intro_key = intros_keys[intros_keys.length - 1];
 
     return (
       <div
-        onScroll={() => this.handleScroll()}
+        style={dark_mode ? {backgroundColor: "#262626"} :{}}
+        id="home"
         className="home">
         {this.renderIntro()}
+        {window_dimensions.isDesktop &&
+          <p
+            style={dark_mode ? {color: "white"} : {}}
+            className="Left-name">
+            Kevin Eugene
+          </p>
+        }
         <div
           onClick={() => {
-            const last_intro = document.getElementById("last-intro");
-            last_intro.scrollIntoView({
+            const last_intro_dom = document.getElementById("last-intro");
+            this.props.introFocus(last_intro_key);
+            last_intro_dom.scrollIntoView({
               behavior: 'smooth'
             });
           }}

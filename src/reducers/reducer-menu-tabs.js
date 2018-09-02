@@ -8,9 +8,9 @@ const initialState = {
   concepts: {
     text: "Concepts",
   },
-  blog: {
-    text: "Blog",
-  },
+  // blog: {
+  //   text: "Blog",
+  // },
   resume: {
     text: "resume",
   }

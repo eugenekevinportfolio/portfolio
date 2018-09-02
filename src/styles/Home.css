@@ -3,6 +3,13 @@
     width: 100%;
     height: 50%;
   }
+
+  .home {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 300px;
+    top: 52%;
+  }
 }
 
 @media screen and (min-width: 810px) {
@@ -10,6 +17,13 @@
     margin-left: 45px;
     width: 75%;
     height: 70%;
+  }
+
+  .home {
+    padding-left: 120px;
+    padding-right: 50px;
+    padding-bottom: 270px;
+    top: 50%;
   }
 }
 
@@ -22,9 +36,9 @@
     transform: scale(0.8);
   }
 
-  .home {
+  /* .home {
     padding: 320px 20px 280px;
-  }
+  } */
 }
 
 @media screen and (min-width: 450px) and (max-width: 699px) {
@@ -34,10 +48,6 @@
 
   .download {
     transform: scale(0.85);
-  }
-
-  .home {
-    padding: 360px 20px 280px;
   }
 }
 
@@ -49,19 +59,11 @@
   .download {
     transform: scale(0.9);
   }
-
-  .home {
-    padding: 340px 20px 280px;
-  }
 }
 
 @media screen and (min-width: 1000px) {
   .home-center p, .intro {
     font-size: 55px;
-  }
-
-  .home {
-    padding: 300px 50px 280px;
   }
 }
 
@@ -151,11 +153,14 @@
 /* TEST */
 
 .home {
-  overflow: auto;
+  /* overflow: auto; */
+  position: absolute;
   animation-duration: 0.6s;
   animation-name: slidein;
   animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
   -webkit-overflow-scrolling: touch;
+  background-color: rgba(256,256,256,1);
+  transition: all 0.3s ease-in-out;
 }
 
 @keyframes slidein {
@@ -182,12 +187,10 @@
   justify-content: center;
   align-items: center;
   position: fixed;
-  bottom: 10px;
+  bottom: 7px;
   left: calc(50% - 75.695px);
   cursor: pointer;
-  transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1),
-  opacity 0.5s cubic-bezier(0.645, 0.045, 0.355, 1),
-  bottom 0.1s cubic-bezier(0.645, 0.045, 0.355, 1) 0.5s;
+  transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 .scroll-bottom p {
@@ -210,4 +213,13 @@
   to {
     transform: translateY(10px);
   }
+}
+
+.Left-name {
+  position: fixed;
+  left: 0px;
+  top: calc(50% + 10px);
+  transform: rotate(270deg);
+  transition: opacity 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+  z-index: 110;
 }

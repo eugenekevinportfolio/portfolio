@@ -5,17 +5,16 @@ import '../styles/Concepts.css';
 
 class Cover extends Component {
   coverStyle() {
-    const { dark_mode, order } = this.props;
+    const { selected_cover, id } = this.props;
 
-    if (dark_mode) {
+    if (id === selected_cover) {
       return {
-        left: order*100 + '%',
-        backgroundColor: "#262626"
+        opacity: 1
       }
     }
     else {
       return {
-        left: order*100 + '%'
+        opacity: 0.2
       }
     }
   }
@@ -25,14 +24,10 @@ class Cover extends Component {
 
     return (
       <div
+        id={id === "youtube" && "last-cover"}
         style={this.coverStyle()}
         className="cover">
-        <div
-          style={id !== current_cover ? {
-            transform: "scale(0.6)",
-            opacity: 0
-          } : {}}
-          className = "cover-content">
+        <div className = "cover-content">
           <p
             style={dark_mode ? {
               color: "white"
@@ -62,11 +57,14 @@ class Cover extends Component {
 
 const selector = createSelector(
   state => state['dark_mode'],
+  state => state['selected_cover'],
   (
-    dark_mode
+    dark_mode,
+    selected_cover
 ) => {
     return  {
-      dark_mode
+      dark_mode,
+      selected_cover
     };
   }
 );

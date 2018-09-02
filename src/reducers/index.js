@@ -24,6 +24,7 @@ import chapters from './reducer-chapters.js';
 import selector_position from './reducer-selector.js';
 import transparent_article from './reducer-transparent-article.js';
 import bottom_open from './reducer-bottom-article.js';
+import selected_cover from './reducer-selected-cover.js';
 
 const allReducers = combineReducers({
   menu_tabs,
@@ -50,7 +51,8 @@ const allReducers = combineReducers({
   chapters,
   selector_position,
   transparent_article,
-  bottom_open
+  bottom_open,
+  selected_cover
 });
 
 export default allReducers;
