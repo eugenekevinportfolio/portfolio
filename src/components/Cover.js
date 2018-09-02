@@ -24,7 +24,6 @@ class Cover extends Component {
 
     return (
       <div
-        id={id === "youtube" && "last-cover"}
         style={this.coverStyle()}
         className="cover">
         <div className = "cover-content">
