@@ -39,11 +39,10 @@ class Concepts extends Component {
     this.setState({desync_current_cover: selected_cover});
   }
 
-  componentDidMount() {
-    this.handleScroll = this.handleScroll.bind(this);
-    window.addEventListener("wheel", this.handleScroll);
-    window.addEventListener("touchmove", this.handleScroll);
-  }
+  // componentDidMount() {
+  //   this.handleScroll = this.handleScroll.bind(this);
+  //   window.addEventListener("wheel", this.handleScroll);
+  // }
 
   componentDidUpdate(prevProps) {
     const { selected_cover } = this.props;
@@ -65,11 +64,10 @@ class Concepts extends Component {
     }
   }
 
-  componentWillUnmount() {
-    window.removeEventListener("wheel", this.handleScroll);
-    window.removeEventListener("touchmove", this.handleScroll);
-    this.handleScroll = undefined;
-  }
+  // componentWillUnmount() {
+  //   window.removeEventListener("wheel", this.handleScroll);
+  //   this.handleScroll = undefined;
+  // }
 
   handleScroll() {
     const { window_dimensions, covers, selected_cover } = this.props;
@@ -211,6 +209,7 @@ class Concepts extends Component {
 
     return (
       <div
+        onScroll={() => this.handleScroll()}
         style={this.conceptStyle()}
         className="concepts">
         <div className="concepts-horizontal-scroll">

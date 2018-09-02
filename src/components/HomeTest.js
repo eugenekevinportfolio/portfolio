@@ -105,7 +105,7 @@ class HomeTest extends Component {
         <div
           onClick={() => {
             const last_intro_dom = document.getElementById("last-intro");
-            this.props.introFocus(last_intro_key);
+            // this.props.introFocus(last_intro_key);
             last_intro_dom.scrollIntoView({
               behavior: 'smooth'
             });
