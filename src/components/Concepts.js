@@ -42,6 +42,7 @@ class Concepts extends Component {
   componentDidMount() {
     this.handleScroll = this.handleScroll.bind(this);
     window.addEventListener("wheel", this.handleScroll);
+    window.addEventListener("touchmove", this.handleScroll);
   }
 
   componentDidUpdate(prevProps) {
@@ -66,6 +67,7 @@ class Concepts extends Component {
 
   componentWillUnmount() {
     window.removeEventListener("wheel", this.handleScroll);
+    window.removeEventListener("touchmove", this.handleScroll);
     this.handleScroll = undefined;
   }
 

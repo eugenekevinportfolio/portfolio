@@ -29,13 +29,13 @@ class HomeTest extends Component {
     // this.pressKey = this.pressKey.bind(this);
     // window.addEventListener("keydown", this.pressKey);
     this.handleScroll = this.handleScroll.bind(this);
-    window.addEventListener("wheel", this.handleScroll);
+    window.addEventListener("scroll", this.handleScroll);
   }
 
   componentWillUnmount() {
     // window.removeEventListener("keydown", this.pressKey);
     // this.pressKey = undefined;
-    window.removeEventListener("wheel", this.handleScroll);
+    window.removeEventListener("scroll", this.handleScroll);
     this.handleScroll = undefined;
   }
 
