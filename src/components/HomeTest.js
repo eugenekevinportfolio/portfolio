@@ -83,6 +83,22 @@ class HomeTest extends Component {
     }
   }
 
+  homeStyle() {
+    const { dark_mode, window_dimensions } = this.props;
+
+    if (dark_mode) {
+      return {
+        backgroundColor: "#262626",
+        paddingBottom: (window_dimensions.height / 2) - 120
+      }
+    }
+    else {
+      return {
+        paddingBottom: (window_dimensions.height / 2) - 120
+      }
+    }
+  }
+
   render() {
     const { home_finished, dark_mode, intros, window_dimensions } = this.props;
     const down_arrow = dark_mode ? light_down_arrow : dark_down_arrow;
@@ -91,7 +107,7 @@ class HomeTest extends Component {
 
     return (
       <div
-        style={dark_mode ? {backgroundColor: "#262626"} :{}}
+        style={this.homeStyle()}
         id="home"
         className="home">
         {this.renderIntro()}
