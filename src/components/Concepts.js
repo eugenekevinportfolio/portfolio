@@ -40,8 +40,8 @@ class Concepts extends Component {
   }
 
   // componentDidMount() {
-  //   this.handleScroll = this.handleScroll.bind(this);
-  //   window.addEventListener("wheel", this.handleScroll);
+  //   this.handleOpenScroll = this.handleOpenScroll.bind(this);
+  //   window.addEventListener("wheel", this.handleOpenScroll);
   // }
 
   componentDidUpdate(prevProps) {
@@ -65,8 +65,8 @@ class Concepts extends Component {
   }
 
   // componentWillUnmount() {
-  //   window.removeEventListener("wheel", this.handleScroll);
-  //   this.handleScroll = undefined;
+  //   window.removeEventListener("wheel", this.handleOpenScroll);
+  //   this.handleOpenScroll = undefined;
   // }
 
   handleScroll() {
@@ -86,6 +86,12 @@ class Concepts extends Component {
     const id_to_focus = Object.keys(covers)[index_of_min];
     id_to_focus !== selected_cover && this.props.selectCover(id_to_focus);
   }
+
+  // handleOpenScroll(e) {
+  //   if (e.deltaY > 15) {
+  //     this.props.openConcept(true);
+  //   }
+  // }
 
   renderCovers(current_cover) {
     const { covers } = this.props;

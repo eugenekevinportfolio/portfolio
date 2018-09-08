@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import { bindActionCreators } from 'redux';
-import { selectTab } from '../actions/index.js';
+import {
+  selectTab,
+  introFocus,
+  openConcept,
+  hideNavbar
+} from '../actions/index.js';
 import resume from '../img/Resume.pdf';
 import dark_resume from '../img/DarkResume.pdf';
 
@@ -62,7 +67,7 @@ class MobileTab extends Component {
   }
 
   render() {
-    const { text, id, dark_mode } = this.props;
+    const { text, id, dark_mode, current_tab, concept_open, navbar_hidden, intros } = this.props;
     if (id === "resume") {
       return (
         <a
@@ -82,7 +87,21 @@ class MobileTab extends Component {
           style={this.mobileTabStyle()}
           className="mobile-tab"
           onClick={() => {
-            this.props.selectTab(id)
+            this.props.selectTab(id);
+            if (id === "home" && current_tab === "home") {
+              const first_intro_dom = document.getElementById("first-intro");
+              this.props.introFocus(Object.keys(intros)[0]);
+              first_intro_dom.scrollIntoView({
+                'behavior': "smooth"
+              });
+            }
+            else if (id === "home" && current_tab !== "home") {
+              this.props.introFocus(Object.keys(intros)[0]);
+            }
+            else if (id === "concepts" && concept_open) {
+              this.props.openConcept(false);
+              navbar_hidden && this.props.hideNavbar(false);
+            }
           }}>
           <p>
             {text.toUpperCase()}
@@ -95,7 +114,10 @@ class MobileTab extends Component {
 
 function matchDispatchToProps(dispatch) {
   return bindActionCreators({
-    selectTab
+    selectTab,
+    introFocus,
+    openConcept,
+    hideNavbar
   }, dispatch)
 }
 
@@ -103,15 +125,24 @@ const selector = createSelector(
   state => state['current_tab'],
   state => state['dark_mode'],
   state => state['menu_tabs'],
+  state => state['intros'],
+  state => state['concept_open'],
+  state => state['navbar_hidden'],
   (
     current_tab,
     dark_mode,
-    menu_tabs
+    menu_tabs,
+    intros,
+    concept_open,
+    navbar_hidden
 ) => {
     return  {
       current_tab,
       dark_mode,
-      menu_tabs
+      menu_tabs,
+      intros,
+      concept_open,
+      navbar_hidden
     };
   }
 );

@@ -50,11 +50,14 @@ class Article extends Component {
   }
 
   componentDidMount() {
-    const { window_dimensions } = this.props;
+    const { window_dimensions, concept_open } = this.props;
     this.last_scroll_position = 0;
 
     this.handleScroll = this.handleScroll.bind(this);
     window.addEventListener("scroll", this.handleScroll);
+
+    // Check if concept is open and if so, synchronize
+    concept_open && this.setState({desync_concept_open: true});
 
     // Optimization for videos and universal_messages
     const content = document.getElementsByClassName("video-container");
