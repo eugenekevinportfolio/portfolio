@@ -15,6 +15,8 @@ import {
 } from '../actions/index.js';
 import dark_back_down from '../img/Back_Down.png';
 import light_back_down from '../img/Light_Back_Down.png';
+import dark_back_up from '../img/Back_Up.png';
+import light_back_up from '../img/Light_Back_Up.png';
 import apple_maps from '../videos/Apple Maps.mp4';
 import reading from '../videos/Reading.mp4';
 import notification_centre from '../videos/Notification Centre.mp4';
@@ -39,6 +41,14 @@ import universal_contacts from '../videos/Contact.mp4';
 
 
 class Article extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      desync_concept_open: false
+    }
+  }
+
   componentDidMount() {
     const { window_dimensions } = this.props;
     this.last_scroll_position = 0;
@@ -61,6 +71,20 @@ class Article extends Component {
           content[i].children[0].children[0].play();
         }
       }
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const { concept_open } = this.props;
+
+    // Desync concept open for animation
+    if (!prevProps.concept_open && concept_open) {
+      this.setState({ desync_concept_open: concept_open});
+    }
+    else if (prevProps.concept_open && !concept_open) {
+      setTimeout(() => {
+        this.setState({ desync_concept_open: concept_open});
+      }, 500)
     }
   }
 
@@ -202,7 +226,9 @@ class Article extends Component {
 
   render() {
     const { navbar_hidden, dark_mode, window_dimensions } = this.props;
+    const { desync_concept_open } = this.state;
     const back_down = dark_mode ? light_back_down : dark_back_down;
+    const back_up = dark_mode ? light_back_up : dark_back_up;
     const medium = "https://uxdesign.cc/redesigning-siri-and-adding-multitasking-features-to-ios-70c2f1a1569b"
     const scrollTopOffset = window_dimensions.isDesktop ? 135 : 90;
 
@@ -210,6 +236,7 @@ class Article extends Component {
       <div
         id="article-frame"
         className="article-frame"
+        style={!desync_concept_open ? {display: "none"} : {}}
         >
         {window_dimensions.isDesktop ?
           <div
@@ -219,7 +246,7 @@ class Article extends Component {
             }}
             style={this.backdownStyle()}
             className="back-down-button">
-            <img src={back_down} className="back-down-img" />
+            <img src={back_up} className="back-down-img" />
           </div>
           :
           <div
@@ -229,7 +256,7 @@ class Article extends Component {
             }}
             style={this.mobileBackdownStyle()}
             className="mobile-back-down-button">
-            <img src={dark_back_down} className="back-down-img" />
+            <img src={dark_back_up} className="back-down-img" />
           </div>
         }
         {window_dimensions.isDesktop &&
