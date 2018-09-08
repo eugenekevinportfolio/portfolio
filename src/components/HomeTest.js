@@ -41,7 +41,7 @@ class HomeTest extends Component {
 
   handleScroll() {
     const { window_dimensions, intros, intro_focus } = this.props;
-    const page_center = window_dimensions.height/2 + 20;
+    const page_center = window_dimensions.height/2 + 10;
     const intros_array = document.getElementsByClassName("intro");
     const intros_center = [];
     for (let i = 0; i < intros_array.length; i++) {

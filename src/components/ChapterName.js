@@ -37,8 +37,7 @@ class ChapterName extends Component {
           const partToScrollTo = document.getElementById(id);
           if (partToScrollTo.getBoundingClientRect().top !== 135) {
             partToScrollTo.scrollIntoView();
-            const articleFrame = document.getElementById("article-frame");
-            articleFrame.scrollTop -= 135;
+            document.documentElement.scrollTop -= 135;
             // Optimization for videos and universal_messages
             const content = document.getElementsByClassName("video-container");
             for (let i = 0; i < content.length; i++) {

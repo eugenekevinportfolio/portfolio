@@ -43,6 +43,9 @@ class Article extends Component {
     const { window_dimensions } = this.props;
     this.last_scroll_position = 0;
 
+    this.handleScroll = this.handleScroll.bind(this);
+    window.addEventListener("scroll", this.handleScroll);
+
     // Optimization for videos and universal_messages
     const content = document.getElementsByClassName("video-container");
     for (let i = 0; i < content.length; i++) {
@@ -64,6 +67,8 @@ class Article extends Component {
   componentWillUnmount() {
     const { chapters } = this.props;
     this.props.selectChapter(Object.keys(chapters)[0]);
+    window.removeEventListener("scroll", this.handleScroll);
+    this.handleScroll = undefined;
   }
 
   backdownStyle() {
@@ -134,13 +139,14 @@ class Article extends Component {
 
   handleScroll(e) {
     const { navbar_hidden, chapters, current_chapter, window_dimensions } = this.props;
-    const deltaY = e.target.scrollTop - this.last_scroll_position;
+    const article_content = document.getElementById("article-content");
+    const deltaY = article_content.getBoundingClientRect().top - this.last_scroll_position;
 
     if (deltaY > 10) {
-      !navbar_hidden && this.props.hideNavbar(true);
+      navbar_hidden && this.props.hideNavbar(false);
     }
     else if (deltaY < -15) {
-      navbar_hidden && this.props.hideNavbar(false);
+      !navbar_hidden && this.props.hideNavbar(true);
     }
 
     // Optimization for videos and universal_messages
@@ -190,7 +196,7 @@ class Article extends Component {
         }
       }
     }
-    this.last_scroll_position = e.target.scrollTop;
+    this.last_scroll_position = article_content.getBoundingClientRect().top;
 
   }
 
@@ -203,8 +209,8 @@ class Article extends Component {
     return (
       <div
         id="article-frame"
-        onScroll={(e) => this.handleScroll(e)}
-        className="article-frame">
+        className="article-frame"
+        >
         {window_dimensions.isDesktop ?
           <div
             onClick={() => {

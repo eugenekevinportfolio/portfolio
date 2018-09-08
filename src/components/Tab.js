@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import { bindActionCreators } from 'redux';
-import { selectTab } from '../actions/index.js';
 import resume from '../img/Resume.pdf';
 import dark_resume from '../img/DarkResume.pdf';
-import { introFocus } from '../actions/index.js';
+import {
+  introFocus,
+  openConcept,
+  hideNavbar,
+  selectTab
+} from '../actions/index.js';
 
 class Tab extends Component {
   selectorStyle() {
@@ -45,7 +49,7 @@ class Tab extends Component {
   }
 
   render() {
-    const { text, id, dark_mode, current_tab, intros } = this.props;
+    const { text, id, dark_mode, current_tab, intros, concept_open, navbar_hidden } = this.props;
     if (id === "resume") {
       return (
         <a
@@ -78,6 +82,10 @@ class Tab extends Component {
             else if (id === "home" && current_tab !== "home") {
               this.props.introFocus(Object.keys(intros)[0]);
             }
+            else if (id === "concepts" && concept_open) {
+              this.props.openConcept(false);
+              navbar_hidden && this.props.hideNavbar(false);
+            }
           }}>
           <p style={(dark_mode && id !== current_tab) ? {
             color: "white"
@@ -93,7 +101,9 @@ class Tab extends Component {
 function matchDispatchToProps(dispatch) {
   return bindActionCreators({
     selectTab,
-    introFocus
+    introFocus,
+    openConcept,
+    hideNavbar
   }, dispatch)
 }
 
@@ -102,17 +112,23 @@ const selector = createSelector(
   state => state['dark_mode'],
   state => state['home_finished'],
   state => state['intros'],
+  state => state['concept_open'],
+  state => state['navbar_hidden'],
   (
     current_tab,
     dark_mode,
     home_finished,
-    intros
+    intros,
+    concept_open,
+    navbar_hidden
 ) => {
     return  {
       current_tab,
       dark_mode,
       home_finished,
-      intros
+      intros,
+      concept_open,
+      navbar_hidden
     };
   }
 );
