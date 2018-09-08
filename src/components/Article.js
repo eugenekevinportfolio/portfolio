@@ -250,8 +250,7 @@ class Article extends Component {
             To have a full overview of the features introduced with iOS Mogi, <a href={medium} target="_blank" rel="noopener noreferrer">take a look at my Medium story.</a> If you just want to hear more about the design process, scroll down to the chapter <span onClick={() => {
               const backstory = document.getElementById("backstory");
               backstory.scrollIntoView();
-              const articleFrame = document.getElementById("article-frame");
-              articleFrame.scrollTop -= scrollTopOffset;
+              document.documentElement.scrollTop -= scrollTopOffset;
             }}>"A little bit of backstory"</span>.
           </p>
           <p className="article-paragraph">
