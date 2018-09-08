@@ -498,7 +498,7 @@
 
 .mobile-back-down-button {
   position: fixed;
-  bottom: 15px;
+  bottom: 30px;
   left: 20px;
   display: flex;
   justify-content: center;
