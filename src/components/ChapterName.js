@@ -10,11 +10,13 @@ import {
 } from '../actions/index.js';
 
 class ChapterName extends Component {
-  componentDidMount() {
-    const { id } = this.props;
-    const position = this.chapter_name.getBoundingClientRect().top;
-    this.props.storePosition(id, position);
-    id === "intro" && this.props.moveSelector(position);
+  componentDidUpdate(prevProps) {
+    const { id, concept_open } = this.props;
+    if (!prevProps.concept_open && concept_open) {
+      const position = this.chapter_name.getBoundingClientRect().top;
+      this.props.storePosition(id, position);
+      id === "intro" && this.props.moveSelector(position);
+    }
   }
 
   chapterNameStyle() {
@@ -76,15 +78,18 @@ const selector = createSelector(
   state => state['window'],
   state => state['dark_mode'],
   state => state['current_chapter'],
+  state => state['concept_open'],
   (
     window_dimensions,
     dark_mode,
-    current_chapter
+    current_chapter,
+    concept_open
 ) => {
     return  {
       window_dimensions,
       dark_mode,
-      current_chapter
+      current_chapter,
+      concept_open
     };
   }
 );
