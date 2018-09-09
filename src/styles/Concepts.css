@@ -294,7 +294,7 @@
   width: 12px;
   height: 12px;
   background-color: black;
-  position: absolute;
+  position: fixed;
   left: calc(50% - 6px);
 }
 
