@@ -59,26 +59,18 @@ class Article extends Component {
     // Check if concept is open and if so, synchronize
     concept_open && this.setState({desync_concept_open: true});
 
+
     // Optimization for videos and universal_messages
     const content = document.getElementsByClassName("video-container");
     for (let i = 0; i < content.length; i++) {
-      if (content[i].getBoundingClientRect().bottom < 0 || content[i].getBoundingClientRect().top > window_dimensions.height) {
-        // content[i].style.visibility = "hidden";
-        if (content[i].children[0].children[0].nodeName === "VIDEO") {
-          content[i].children[0].children[0].pause();
-        }
-      }
-      else {
-        // content[i].style.visibility = "";
-        if (content[i].children[0].children[0].nodeName === "VIDEO") {
-          content[i].children[0].children[0].play();
-        }
+      if (!concept_open && content[i].children[0].children[0].nodeName === "VIDEO") {
+        content[i].children[0].children[0].pause();
       }
     }
   }
 
   componentDidUpdate(prevProps) {
-    const { concept_open } = this.props;
+    const { concept_open, window_dimensions } = this.props;
 
     // Desync concept open for animation
     if (!prevProps.concept_open && concept_open) {
@@ -88,6 +80,20 @@ class Article extends Component {
       setTimeout(() => {
         this.setState({ desync_concept_open: concept_open});
       }, 500)
+    }
+
+    // Play first video
+    if (!prevProps.concept_open && concept_open) {
+      const content = document.getElementsByClassName("video-container");
+      content[0].children[0].children[0].play();
+      for (let i = 1; i < content.length; i++) {
+        if (content[i].children[0].children[0].nodeName === "VIDEO" && !content[i].children[0].children[0].paused) {
+          // It seems videos need some time, workaround
+          setTimeout(() => {
+            content[i].children[0].children[0].pause();
+          }, 600);
+        }
+      }
     }
   }
 
