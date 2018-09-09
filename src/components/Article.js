@@ -227,9 +227,33 @@ class Article extends Component {
 
   }
 
+  frameStyle() {
+    const { dark_mode } = this.props;
+    const { desync_concept_open } = this.state;
+
+    if (dark_mode) {
+      if (!desync_concept_open) {
+        return {
+          display: "none"
+        }
+      }
+      else {
+        return {
+          backgroundColor: "#262626"
+        }
+      }
+    }
+    else {
+      if (!desync_concept_open) {
+        return {
+          display: "none"
+        }
+      }
+    }
+  }
+
   render() {
     const { navbar_hidden, dark_mode, window_dimensions } = this.props;
-    const { desync_concept_open } = this.state;
     const back_down = dark_mode ? light_back_down : dark_back_down;
     const back_up = dark_mode ? light_back_up : dark_back_up;
     const medium = "https://uxdesign.cc/redesigning-siri-and-adding-multitasking-features-to-ios-70c2f1a1569b"
@@ -239,7 +263,7 @@ class Article extends Component {
       <div
         id="article-frame"
         className="article-frame"
-        style={!desync_concept_open ? {display: "none"} : {}}
+        style={this.frameStyle()}
         >
         {window_dimensions.isDesktop ?
           <div

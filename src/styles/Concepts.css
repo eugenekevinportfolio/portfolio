@@ -401,6 +401,8 @@
   /* margin: auto; */
   position: absolute;
   width: 100%;
+  background-color: white;
+  transition: background-color 0.3s ease-in-out;
 }
 
 .article-content {
