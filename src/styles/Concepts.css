@@ -9,6 +9,9 @@
     padding-right: calc(50% - 120px - 35px);
   }
 
+  .concept-selector {
+    top: 66%;
+  }
 
   .cover-title {
     font-size: 26px;
@@ -61,6 +64,10 @@
   .concepts-horizontal-scroll {
     padding-left: calc(50% - 175px);
     padding-right: calc(50% - 175px - 80px);
+  }
+
+  .concept-selector {
+    top: 66%;
   }
 
   .cover-title {
@@ -134,6 +141,10 @@
     padding-right: calc(50% - 190px - 90px);
   }
 
+  .concept-selector {
+    top: 68%;
+  }
+
   .cover-title {
     font-size: 40px;
   }
@@ -191,6 +202,10 @@
   .concepts-horizontal-scroll {
     padding-left: calc(50% - 225px);
     padding-right: calc(50% - 225px - 150px);
+  }
+
+  .concept-selector {
+    top: 73%;
   }
 
   .cover-title {
@@ -281,7 +296,6 @@
   background-color: black;
   position: fixed;
   left: calc(50% - 6px);
-  bottom: 25%;
 }
 
 .cover {
@@ -302,6 +316,7 @@
   margin-bottom: 13px;
   margin-top: 0px;
   text-align: center;
+  white-space: nowrap;
 }
 
 .cover-description {

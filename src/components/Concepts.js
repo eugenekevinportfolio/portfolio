@@ -202,6 +202,14 @@ class Concepts extends Component {
     }
   }
 
+  // selectorStyle() {
+  //   const { dark_mode } = this.props;
+  //
+  //   return {
+  //     top: this.conceptsScroll.getBoundingClientRect().bottom + 20
+  //   }
+  // }
+
   render() {
     const { covers, dark_mode, burgerOpen } = this.props;
     const { desync_current_cover } = this.state;
@@ -218,7 +226,9 @@ class Concepts extends Component {
         onScroll={() => this.handleScroll()}
         style={this.conceptStyle()}
         className="concepts">
-        <div className="concepts-horizontal-scroll">
+        <div
+          ref={(conceptsScroll) => { this.conceptsScroll = conceptsScroll; }}
+          className="concepts-horizontal-scroll">
           {this.renderCovers()}
         </div>
         <div
