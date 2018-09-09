@@ -8,9 +8,9 @@ const initialState = {
     reddit: "https://www.reddit.com/r/apple/comments/947yrm/redesigning_siri_and_adding_multitasking_features/?utm_content=comments&utm_medium=user&utm_source=reddit&utm_name=frontpage"
   },
   chatroom: {
-    ready: false,
+    ready: true,
     title: "iMessage Chatroom",
-    description: "A new place to enjoy content with relatives in real time, breaking out the shell of iMessage, and more. iMessage Chatroom tries to ease live collaboration and sharing on iOS.",
+    description: "A new place to enjoy content or work with relatives in real time, new use cases for live collaboration, breaking out of the shell of iMessage, and more. iMessage Chatroom tries to ease live collaboration and sharing on iOS.",
     date: "August 2018",
     medium: "https://uxdesign.cc/redesigning-social-interactions-on-ios-with-imessage-17e9c8fa314",
   },

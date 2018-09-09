@@ -170,7 +170,7 @@ class Concepts extends Component {
     if (transitioning) {
       if (ready) {
         return {
-          left: "calc(50% - 62.14px)",
+          left: "calc(50% - 40.885px)",
           pointerEvents: "none",
           cursor: "default",
           opacity: 0
@@ -188,7 +188,7 @@ class Concepts extends Component {
     else {
       if (ready) {
         return {
-          left: "calc(50% - 62.14px)"
+          left: "calc(50% - 40.885px)"
         }
       }
       else {
@@ -219,7 +219,7 @@ class Concepts extends Component {
     const medium_img = dark_mode ? dark_medium_img : light_medium_img;
     const reddit_img = dark_mode ? dark_reddit_img : light_reddit_img;
     const down_arrow = dark_mode ? light_down_arrow : dark_down_arrow;
-    const case_study_text = ready ? "Read case study" : "Story unavailable yet";
+    const case_study_text = ready ? "Read story" : "Story unavailable yet";
 
     return (
       <div

@@ -43,12 +43,13 @@ export const moveSelector = (position) => {
   );
 }
 
-export const storePosition = (id, position) => {
+export const storePosition = (id, position, cover) => {
   return(
     {
       type: "STORE_POSITION",
       id,
-      position
+      position,
+      cover
     }
   );
 }

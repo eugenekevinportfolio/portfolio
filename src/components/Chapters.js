@@ -9,11 +9,11 @@ import { transparentArticle } from '../actions/index.js';
 
 class Chapters extends Component {
   renderChapterNames() {
-    const { chapters } = this.props;
+    const { chapters, selected_cover } = this.props;
 
     return(
       map(
-        chapters,
+        chapters[selected_cover],
         (chapter, id) => <ChapterName key={id} {...chapter} id={id}/>
       )
     );
@@ -46,6 +46,7 @@ class Chapters extends Component {
   }
 
   render() {
+    const { covers, selected_cover } = this.props;
     return (
       <div
         onMouseEnter={() => this.props.transparentArticle(true)}
@@ -58,8 +59,14 @@ class Chapters extends Component {
           style={this.chaptersContentStyle()}
           className="chapters-content">
           <p className="title">
-            iOS Mogi
+            {covers[selected_cover].title}
           </p>
+          {/* <div>
+            <img src={facebook} className="share-icon" alt="Facebook" />
+            <img src={twitter} className="share-icon" alt="Twitter" />
+            <img src={mail} className="share-icon" alt="Mail" />
+            <img src={copy} className="share-icon" alt="Copy" />
+          </div> */}
           <div className="chapter-names">
             {this.renderChapterNames()}
           </div>
@@ -79,15 +86,21 @@ const selector = createSelector(
   state => state['dark_mode'],
   state => state['selector_position'],
   state => state['chapters'],
+  state => state['covers'],
+  state => state['selected_cover'],
   (
     dark_mode,
     selector_position,
-    chapters
+    chapters,
+    covers,
+    selected_cover
 ) => {
     return  {
       dark_mode,
       selector_position,
-      chapters
+      chapters,
+      covers,
+      selected_cover
     };
   }
 );

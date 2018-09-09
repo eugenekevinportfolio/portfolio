@@ -10,13 +10,12 @@ import {
 } from '../actions/index.js';
 
 class ChapterName extends Component {
-  componentDidUpdate(prevProps) {
-    const { id, concept_open } = this.props;
-    if (!prevProps.concept_open && concept_open) {
-      const position = this.chapter_name.getBoundingClientRect().top;
-      this.props.storePosition(id, position);
-      id === "intro" && this.props.moveSelector(position);
-    }
+  componentDidMount() {
+    const { id, selected_cover, covers } = this.props;
+    const position = this.chapter_name.getBoundingClientRect().top;
+    this.props.storePosition(id, position, selected_cover);
+    (id === "intro1" ||  id === "intro2") && this.props.selectChapter(id);
+    (id === "intro1" ||  id === "intro2") && this.props.moveSelector(position);
   }
 
   chapterNameStyle() {
@@ -79,17 +78,23 @@ const selector = createSelector(
   state => state['dark_mode'],
   state => state['current_chapter'],
   state => state['concept_open'],
+  state => state['selected_cover'],
+  state => state['covers'],
   (
     window_dimensions,
     dark_mode,
     current_chapter,
-    concept_open
+    concept_open,
+    selected_cover,
+    covers
 ) => {
     return  {
       window_dimensions,
       dark_mode,
       current_chapter,
-      concept_open
+      concept_open,
+      selected_cover,
+      covers
     };
   }
 );

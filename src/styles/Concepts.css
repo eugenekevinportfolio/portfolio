@@ -13,7 +13,7 @@
     transform: translateY(135px);
   }
 
-  .cover-title {
+  .cover-title, .mobile-article-title {
     font-size: 26px;
   }
 
@@ -22,7 +22,7 @@
     /* width: 70%; */
   }
 
-  .cover-date {
+  .cover-date, .mobile-article-date {
     font-size: 13px;
   }
 
@@ -123,7 +123,7 @@
 @media screen and (min-width: 810px) and (max-width: 999px) {
   .article-content {
     width: 520px;
-    transform: translateX(90px);
+    transform: translateX(100px);
     /* margin-left: 130px; */
     padding-top: 105px;
     padding-bottom: 120px;

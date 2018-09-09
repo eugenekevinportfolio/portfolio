@@ -26,7 +26,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      // desync_concept_open: false
+      desync_concept_open: false
     }
   }
 
@@ -71,15 +71,15 @@ class App extends Component {
       }, 300)
     }
 
-    // // Desync concept open for animation
-    // if (!prevProps.concept_open && concept_open) {
-    //   this.setState({ desync_concept_open: concept_open});
-    // }
-    // else if (prevProps.concept_open && !concept_open) {
-    //   setTimeout(() => {
-    //     this.setState({ desync_concept_open: concept_open});
-    //   }, 500)
-    // }
+    // Desync concept open for animation
+    if (!prevProps.concept_open && concept_open) {
+      this.setState({ desync_concept_open: concept_open});
+    }
+    else if (prevProps.concept_open && !concept_open) {
+      setTimeout(() => {
+        this.setState({ desync_concept_open: concept_open});
+      }, 500)
+    }
   }
 
   leftStyle() {
@@ -179,7 +179,7 @@ class App extends Component {
 
   render() {
     const { window_dimensions, dark_mode, current_tab } = this.props;
-    // const { desync_concept_open } = this.state;
+    const { desync_concept_open } = this.state;
     const arrow = dark_mode ? light_back : back;
     return (
       <div
@@ -211,7 +211,7 @@ class App extends Component {
           } */}
           {/* <div className="module-container"> */}
             {this.renderModule()}
-            {current_tab === "concepts" && <Article />}
+            {current_tab === "concepts" && desync_concept_open && <Article />}
           {/* </div> */}
         {/* </div> */}
       </div>
