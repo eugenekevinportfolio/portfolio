@@ -17,7 +17,7 @@ const initialState = {
     has_focused: false
   },
   [uniqueId('intro-')]: {
-    text: "Scroll to the bottom to skip this intro and look at my projects and blog.",
+    text: "Scroll to the bottom to skip this intro and look at my projects.",
     central_position: 0,
     has_focused: false
   },
@@ -77,7 +77,7 @@ const initialState = {
     has_focused: false
   },
   [uniqueId('intro-')]: {
-    text: "So I had to learn everything by myself. ",
+    text: "So I had to learn everything by myself.",
     central_position: 0,
     has_focused: false
   },
