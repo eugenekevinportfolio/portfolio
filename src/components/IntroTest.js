@@ -42,21 +42,27 @@ class IntroTest extends Component {
             color: "white"
           }
         }
-        else if (id.substring(6) - intro_focus.substring(6) === 1) {
+        else if (Math.abs(id.substring(6) - intro_focus.substring(6)) === 1) {
           return {
-            opacity: 0.1,
+            opacity: 0.5,
             color: "white"
           }
         }
-        else if (id.substring(6) - intro_focus.substring(6) === -1) {
+        else if (id.substring(6) - intro_focus.substring(6) === -2) {
           return {
-            opacity: 0.02,
+            opacity: 0.2,
             color: "white"
           }
         }
         else if (id.substring(6) - intro_focus.substring(6) === 2) {
           return {
-            opacity: 0.02,
+            opacity: 0.3,
+            color: "white"
+          }
+        }
+        else if (id.substring(6) - intro_focus.substring(6) === 3) {
+          return {
+            opacity: 0.03,
             color: "white"
           }
         }
@@ -71,7 +77,7 @@ class IntroTest extends Component {
         }
         else {
           return {
-            opacity: 0.1
+            opacity: 0.3
           }
         }
       }
@@ -81,19 +87,24 @@ class IntroTest extends Component {
             opacity: 1
           }
         }
-        else if (id.substring(6) - intro_focus.substring(6) === 1) {
+        else if (Math.abs(id.substring(6) - intro_focus.substring(6)) === 1) {
           return {
-            opacity: 0.1
+            opacity: 0.3
           }
         }
-        else if (id.substring(6) - intro_focus.substring(6) === -1) {
+        else if (id.substring(6) - intro_focus.substring(6) === -2) {
           return {
-            opacity: 0.04,
+            opacity: 0.06,
           }
         }
         else if (id.substring(6) - intro_focus.substring(6) === 2) {
           return {
-            opacity: 0.02
+            opacity: 0.15
+          }
+        }
+        else if (id.substring(6) - intro_focus.substring(6) === 3) {
+          return {
+            opacity: 0.02,
           }
         }
       }

@@ -221,7 +221,7 @@ class Chatroom extends Component {
           With Group FaceTime being a reality, Chatroom can also be used with video conferencing. Expand the drawer, and tap the FaceTime icon to launch a video session with your friends.
         </p>
         <Image src={conference}>
-          Video conferencing with beautifl people.
+          Video conferencing with beautiful people.
         </Image>
         <p
           id="shell"
@@ -264,7 +264,7 @@ class Chatroom extends Component {
           The second reason is that it would have been a huge source of visual distraction, and it would have impacted the user experience. Messages popping up from the bottom would ultimately catch the eye there, preventing the user from fully enjoying their content.
         </p>
         <p className="article-paragraph">
-          The final reason is that this design would have been hardly scalable to other use cases, which represents a huge part of this concept. To make it work in cases like collaboration in a document, the user interface would have o be changed. If so, Chatroom would not have had a strong visual identity that would make it easily recognizable, and people would have not known whether they would be using it or if it was just part of the app’s experience.
+          The final reason is that this design would have been hardly scalable to other use cases, which represents a huge part of this concept. To make it work in cases like collaboration in a document, the user interface would have to be changed. If so, Chatroom would not have had a strong visual identity that would make it easily recognizable, and people would have not known whether they would be using it or if it was just part of the app’s experience.
         </p>
         <p className="article-paragraph">
           Because of all these reasons, I decided to reject this design and ended up with the one presented in this concept.
