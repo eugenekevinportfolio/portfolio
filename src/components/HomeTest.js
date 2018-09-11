@@ -89,12 +89,12 @@ class HomeTest extends Component {
     if (dark_mode) {
       return {
         backgroundColor: "#262626",
-        paddingBottom: (window_dimensions.height / 2) - 120
+        paddingBottom: (window_dimensions.height / 2) - 105
       }
     }
     else {
       return {
-        paddingBottom: (window_dimensions.height / 2) - 120
+        paddingBottom: (window_dimensions.height / 2) - 105
       }
     }
   }
