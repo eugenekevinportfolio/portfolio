@@ -32,22 +32,22 @@ const initialState = {
     has_focused: false
   },
   [uniqueId('intro-')]: {
-    text: "This website is my portfolio. It showcases some of the projects I have done on my free time.",
+    text: "This website is my portfolio.",
     central_position: 0,
     has_focused: false
   },
   [uniqueId('intro-')]: {
-    text: "It was crafted from scratch with React with love, passion, and attention to details at its highest.",
+    text: "It showcases some of the projects I have done on my free time using Sketch and Principle.",
     central_position: 0,
     has_focused: false
   },
   [uniqueId('intro-')]: {
-    text: "The concepts have been made using Sketch and Principle.",
+    text: "I crafted it from scratch with React with love, passion, and attention to details at its highest.",
     central_position: 0,
     has_focused: false
   },
   [uniqueId('intro-')]: {
-    text: "I hope you will enjoy discovering them. :)",
+    text: "I hope you will enjoy discovering it and reading about my concepts. :)",
     central_position: 0,
     has_focused: false
   },
