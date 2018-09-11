@@ -12,7 +12,7 @@ const initialState = {
     has_focused: false
   },
   [uniqueId('intro-')]: {
-    text: "I currently live in Paris but I have lived a year in Southern France and almost a year in Tokyo, Japan.",
+    text: "I currently live in Paris and I have lived a year in Southern France and almost a year in Tokyo, Japan.",
     central_position: 0,
     has_focused: false
   },
