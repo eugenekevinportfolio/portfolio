@@ -219,7 +219,7 @@ class Concepts extends Component {
     const medium_img = dark_mode ? dark_medium_img : light_medium_img;
     const reddit_img = dark_mode ? dark_reddit_img : light_reddit_img;
     const down_arrow = dark_mode ? light_down_arrow : dark_down_arrow;
-    const case_study_text = ready ? "Read story" : "Story unavailable yet";
+    const case_study_text = ready ? "Read story" : "";
 
     return (
       <div
