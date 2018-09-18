@@ -1,4 +1,4 @@
-const initialState = "moment-9";
+const initialState = "moment-1";
 
 export default (state = initialState, action) => {
   switch (action.type) {

@@ -13,13 +13,40 @@ import {
 } from '../actions/index.js';
 import Tab from './Tab.js';
 import '../styles/NavBar.css';
+import light_top from '../img/TopGradient.png';
+import dark_top from '../img/DarkTop.png';
 
 class NavBar extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      destroyedSkip: false
+      destroyedSkip: false,
+      showLight: true,
+      showDark: false,
+    }
+  }
+
+  componentWillReceiveProps(prevProps) {
+    const { dark_mode } = this.props;
+    const { showLight } = this.state;
+    if (dark_mode !== prevProps.dark_mode) {
+      if (showLight) {
+        this.setState({showLight: false});
+        setTimeout(
+          () => this.setState({
+            showDark: true,
+          })
+        , 300)
+      }
+      else {
+        this.setState({showDark: false});
+        setTimeout(
+          () => this.setState({
+            showLight: true,
+          })
+        , 300)
+      }
     }
   }
 
@@ -110,8 +137,27 @@ class NavBar extends Component {
     }
   }
 
+  renderGradient() {
+    const { showLight, showDark } = this.state;
+
+    if (showLight) {
+      return <img
+        style={showLight ? {} : {opacity: 0}}
+        className="gradient"
+        src={light_top}
+        alt="gradient" />
+    }
+    else {
+      return <img
+        style={showDark ? {} : {opacity: 0}}
+        className="gradient"
+        src={dark_top}
+        alt="gradient" />
+    }
+  }
+
   render() {
-    const { dark_mode, home_finished } = this.props;
+    const { dark_mode, home_finished, current_tab } = this.props;
     const { destroyedSkip } = this.state;
     const dark_mode_icon = dark_mode ? moon : sun;
     const logo = dark_mode ? light_logo : dark_logo;
@@ -121,6 +167,7 @@ class NavBar extends Component {
         style={this.navbarStyle()}
         className="navbar">
         <img className="logo" src={logo} alt="logo" />
+        {current_tab !== "concepts" && this.renderGradient()}
         <div className="tabs">
           {this.renderTabs()}
           <div
@@ -179,7 +226,7 @@ const selector = createSelector(
     home_finished,
     concept_open,
     current_tab,
-    navbar_hidden
+    navbar_hidden,
 ) => {
     return  {
       intros,
@@ -188,7 +235,7 @@ const selector = createSelector(
       home_finished,
       concept_open,
       current_tab,
-      navbar_hidden
+      navbar_hidden,
     };
   }
 );

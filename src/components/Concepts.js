@@ -34,6 +34,10 @@ class Concepts extends Component {
     }
   }
 
+  componentDidMount() {
+    this.props.selectCover("mogi");
+  }
+
   componentWillMount() {
     const { selected_cover } = this.props;
     this.setState({desync_current_cover: selected_cover});

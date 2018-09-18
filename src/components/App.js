@@ -6,6 +6,7 @@ import HomeTest from './HomeTest.js';
 import Concepts from './Concepts.js';
 import Article from './Article.js';
 import Blog from './Blog.js';
+import BlogTest from './BlogTest.js';
 import MobileBlog from './MobileBlog.js';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
@@ -123,20 +124,13 @@ class App extends Component {
           <HomeTest />
         );
       case "blog":
-      if (window_dimensions.isDesktop) {
         return (
-          <Blog />
+          <BlogTest />
         );
-      }
-      else {
-        return (
-          <MobileBlog />
-        );
-      }
       case "concepts":
-      return (
-        <Concepts />
-      );
+        return (
+          <Concepts />
+        );
     }
   }
 
