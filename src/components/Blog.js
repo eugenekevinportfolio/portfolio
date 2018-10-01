@@ -260,9 +260,10 @@ class Blog extends Component {
       if (carousel.isOpen) {
         return {
           transform: "scale(1.7)",
-          left: "-520px",
+          left: "-300px",
           opacity: 0,
           pointerEvents: "none",
+          zIndex: 1000
         }
       }
       else {

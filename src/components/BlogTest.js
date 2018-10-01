@@ -6,7 +6,13 @@ import Moment from './Moment.js';
 import map from 'lodash/map';
 import {
   selectMoment,
+  enterCarousel,
+  selectPicture
 } from '../actions/index.js';
+import PicturesTest from './PicturesTest.js';
+import back from '../img/Back.png';
+import light_back from '../img/LightBack.png';
+import dark_back_up from '../img/Back_Up.png';
 
 class BlogTest extends Component {
   renderMoments() {
@@ -36,27 +42,188 @@ class BlogTest extends Component {
     id_to_focus !== selected_moment && this.props.selectMoment(id_to_focus);
   }
 
+  containerStyle() {
+    const { carousel, window_dimensions } = this.props;
+
+    if (window_dimensions.isDesktop) {
+      if (carousel.isOpen) {
+        return {
+          transform: "scale(1.7) translateX(-500px)",
+          zIndex: 100,
+          opacity: 0,
+          pointerEvents: "none",
+        }
+      }
+    }
+    else {
+      if (carousel.isOpen) {
+        return {
+          transform: "translateY(-300px)",
+          opacity: 0,
+          pointerEvents: "none",
+        }
+      }
+    }
+  }
+
+  backStyle() {
+    const { carousel, dark_mode } = this.props;
+
+    if (dark_mode) {
+      if (carousel.isOpen) {
+        return {
+          opacity: 1,
+          transform: "scale(1)",
+          pointerEvents: "auto",
+          borderColor: "white",
+          transitionDelay: "0.7s"
+        }
+      }
+      else {
+        return {
+          transitionDelay: "0s",
+          borderColor: "white"
+        }
+      }
+    }
+    else {
+      if (carousel.isOpen) {
+        return {
+          opacity: 1,
+          transform: "scale(1)",
+          pointerEvents: "auto",
+          transitionDelay: "0.7s"
+        }
+      }
+      else {
+        return {
+          transitionDelay: "0s"
+        }
+      }
+    }
+  }
+
+  leftStyle() {
+    const { dark_mode, carousel } = this.props;
+
+    if (dark_mode) {
+      if (carousel.isOpen) {
+        return {
+          opacity: 0,
+          color: "white"
+        }
+      }
+      else {
+        return {
+          transitionDelay: "0.6s",
+          color: "white"
+        }
+      }
+    }
+    else {
+      if (carousel.isOpen) {
+        return {
+          opacity: 0,
+        }
+      }
+      else {
+        return {
+          transitionDelay: "0.6s"
+        }
+      }
+    }
+  }
+
+  renderPictures() {
+    const { window_dimensions, carousel } = this.props;
+
+    if (window_dimensions.isDesktop) {
+      return <PicturesTest />
+    }
+    else {
+      if (carousel.isOpen) {
+        return <PicturesTest />
+      }
+    }
+  }
+
+  mobileBackdownStyle() {
+    const { dark_mode, carousel } = this.props;
+
+    if (dark_mode) {
+      if (carousel.isOpen) {
+        return {
+          transitionDelay: "0.5s",
+          borderColor: "white",
+          pointerEvents: "auto",
+        }
+      }
+      else {
+        return {
+          transform: "scale(0.7)",
+          opacity: 0,
+          borderColor: "white"
+        }
+      }
+    }
+    else {
+      if (carousel.isOpen) {
+        return {
+          transitionDelay: "0.5s",
+          pointerEvents: "auto",
+        }
+      }
+      else {
+        return {
+          transform: "scale(0.7)",
+          opacity: 0
+        }
+      }
+    }
+  }
 
   render() {
     const { window_dimensions, dark_mode } = this.props;
+    const arrow = dark_mode ? light_back : back;
 
     return (
       <div className="blog">
-        {window_dimensions.isDesktop &&
-          <p
-            style={dark_mode ? {color: "white"} : {}}
-            className="Left-name">
-            Kevin Eugene
-          </p>
+        {window_dimensions.isDesktop ?
+          <div>
+            <p
+              style={this.leftStyle()}
+              className="Left-name">
+              Kevin Eugene
+            </p>
+            <div
+              onClick={() => {
+                this.props.enterCarousel(false);
+                this.props.selectPicture("");
+                const pictures_DOM = document.getElementsByClassName("pictures");
+                pictures_DOM[0].scrollLeft = 0;
+              }}
+              style={this.backStyle()}
+              className="back-button">
+              <img src={arrow} className="back" alt="back" />
+            </div>
+          </div>
+          :
+          <div
+            onClick={() => {
+              this.props.enterCarousel(false);
+            }}
+            style={this.mobileBackdownStyle()}
+            className="mobile-back-down-button-pictures">
+            <img src={dark_back_up} className="back-down-img" />
+          </div>
         }
         <div
           onScroll={() => this.handleScroll()}
+          style={this.containerStyle()}
           className="moments-container">
           {this.renderMoments()}
         </div>
-        <div className="pictures-container">
-
-        </div>
+        {this.renderPictures()}
       </div>
     );
   }
@@ -64,7 +231,9 @@ class BlogTest extends Component {
 
 function matchDispatchToProps(dispatch) {
   return bindActionCreators({
-    selectMoment
+    selectMoment,
+    enterCarousel,
+    selectPicture
   }, dispatch)
 }
 
@@ -73,17 +242,20 @@ const selector = createSelector(
   state => state['moments'],
   state => state['window'],
   state => state['selected_moment'],
+  state => state['carousel'],
   (
     dark_mode,
     moments,
     window_dimensions,
-    selected_moment
+    selected_moment,
+    carousel
 ) => {
     return {
       dark_mode,
       moments,
       window_dimensions,
-      selected_moment
+      selected_moment,
+      carousel
     };
   }
 );

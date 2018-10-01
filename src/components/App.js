@@ -184,30 +184,8 @@ class App extends Component {
           <NavBar />:
           <MobileNavBar />
         }
-        {/* <div className="below-nav"> */}
-          {/* {window_dimensions.isDesktop &&  current_tab !== "concepts" &&
-            <div className="left-below-nav">
-              <p
-                style={this.leftStyle()}
-                className="Left-name">
-                Kevin Eugene
-              </p>
-              <div
-                onClick={() => {
-                  this.props.enterCarousel(false);
-                  this.props.selectPicture("");
-                }}
-                style={this.backStyle()}
-                className="back-button">
-                <img src={arrow} className="back" alt="back" />
-              </div>
-            </div>
-          } */}
-          {/* <div className="module-container"> */}
-            {this.renderModule()}
-            {current_tab === "concepts" && desync_concept_open && <Article />}
-          {/* </div> */}
-        {/* </div> */}
+          {this.renderModule()}
+          {current_tab === "concepts" && desync_concept_open && <Article />}
       </div>
     );
   }

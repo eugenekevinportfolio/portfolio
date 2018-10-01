@@ -16,7 +16,10 @@
   }
 
   .description {
-    font-size: 13px;
+    transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+    height: 50px;
+    width: 340px;
+    font-size: 15px;
   }
 }
 
@@ -35,6 +38,12 @@
     opacity: 0.5;
     height: auto;
     margin-right: 50px;
+  }
+
+  .description {
+    transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+    height: 50px;
+    width: 700px;
   }
 }
 
@@ -59,12 +68,24 @@
   transition: all 0.3s ease-in-out;
 }
 
+.timers-container {
+  align-items: flex-end;
+  transition-delay: 1s;
+  overflow: hidden;
+  display: flex;
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
 .timers-scroll {
   display: flex;
-  position: absolute;
+  /* position: absolute; */
   transition: all 0.7s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
-.description {
-  transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+.picture-underline {
+  height: 3px;
+  background-color: black;
 }

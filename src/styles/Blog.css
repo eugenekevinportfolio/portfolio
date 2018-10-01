@@ -19,7 +19,6 @@
     display: flex;
     flex: 1;
     justify-content: center;
-    align-items: center;
     padding-left: 20px;
     padding-right: 20px;
   }
@@ -37,6 +36,14 @@
     z-index: 1000;
     opacity: 0;
     transition: all 0.5s ease-in-out;
+  }
+
+  .moments-container {
+    width: 350px;
+    flex-shrink: 0;
+    padding-top: 100px;
+    overflow: scroll;
+    transition: transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1), opacity 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   }
 }
 
@@ -63,26 +70,21 @@
     opacity: 0;
     transition: all 0.5s ease-in-out;
   }
+
+  .moments-container {
+    width: 350px;
+    flex-shrink: 0;
+    padding-top: 150px;
+    padding-left: 110px;
+    overflow: auto;
+    transition: all 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
 }
 
 .blog {
   display: flex;
   flex: 1;
-}
-
-.moments-container {
-  width: 350px;
-  flex-shrink: 0;
-  padding-top: 150px;
-  padding-left: 110px;
-  overflow: auto;
-  /* overflow: hidden;
-  position: relative;
-  display: flex;
-  flex: none;
-  flex-direction: column;
-  transition: all 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
-  z-index: 100; */
+  overflow: hidden;
 }
 
 .start {
@@ -105,8 +107,12 @@
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
+.moment h1, .blog h1 {
+  font-weight: 600;
+}
+
 #last-moment {
-  margin-bottom: 240px;
+  margin-bottom: 230px;
 }
 
 .moment-container {
@@ -146,6 +152,46 @@
 
 .play {
   width: 11px;
+}
+
+.back-button {
+  z-index: 1000;
+  position: fixed;
+  left: 30px;
+  top: calc(50% + 10px);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  border: solid 3px black;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1), opacity 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transform: scale(0.7);
+}
+
+.back {
+  width: 20px;
+  margin-top: 1px;
+}
+
+.mobile-back-down-button-pictures {
+  position: fixed;
+  top: 90px;
+  left: calc(50% - 17.5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  border: solid 3px black;
+  cursor: pointer;
+  background-color: white;
+  transition: transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1), opacity 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+  opacity: 0.8;
+  z-index: 1000;
 }
 
 /* .pictures-control {

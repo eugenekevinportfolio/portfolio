@@ -38,27 +38,23 @@ class Moment extends Component {
         id={id === "moment-2" ? "last-moment" : ""}
         style={this.momentStyle()}
         ref={(moment) => { this.moment = moment }}
-        // onClick={() => {
-        //   const sets_keys = Object.keys(carousel.sets);
-        //   let current_set = {};
-        //   for (let i = 0; i < sets_keys.length; i++) {
-        //     if (carousel.sets[sets_keys[i]].parent === selected_moment) {
-        //       current_set = carousel.sets[sets_keys[i]]
-        //     }
-        //   }
-        //   const first_picture_id_of_current_set = Object.keys(current_set.pictures)[0];
-        //
-        //   if (id !== selected_moment) {
-        //     this.props.selectMoment(id);
-        //   }
-        //   else {
-        //     this.props.autoPlay(true);
-        //     this.props.enterCarousel(true);
-        //     setTimeout(() => {
-        //       this.props.selectPicture(first_picture_id_of_current_set)
-        //     }, 700)
-        //   }
-        // }}
+        onClick={() => {
+          const sets_keys = Object.keys(carousel.sets);
+          let current_set = {};
+          for (let i = 0; i < sets_keys.length; i++) {
+            if (carousel.sets[sets_keys[i]].parent === selected_moment) {
+              current_set = carousel.sets[sets_keys[i]]
+            }
+          }
+          const first_picture_id_of_current_set = Object.keys(current_set.pictures)[0];
+
+          if (id === selected_moment) {
+            this.props.enterCarousel(true);
+            this.props.selectPicture(first_picture_id_of_current_set);
+            // setTimeout(() => {
+            // }, 700)
+          }
+        }}
         className="moment-container">
         <div
           style={dark_mode ? {backgroundColor: "#262626"} : {}}

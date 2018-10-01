@@ -7,50 +7,13 @@ import Timer from './Timer.js';
 import '../styles/Timers.css';
 
 class TimersContainer extends Component {
-  timersContainerStyle() {
-    const { carousel } = this.props;
-
-    if (carousel.isOpen) {
-      return {
-        opacity: 1
-      }
-    }
-    else {
-      return {
-        transitionDelay: "0s",
-        transitionDuration: "0.25s",
-      }
-    }
-  }
-
-  timersScrollStyle() {
-    const { timers_scroll } = this.props;
-
-    return {
-      left: timers_scroll.timers_move
-    }
-
-  }
-
-  renderTimers() {
-    const { current_set_pictures } = this.props;
-
-    return map(
-      current_set_pictures,
-      (picture, id) => <Timer key={id} {...picture} id={id} />
-    )
-
-  }
-
   render() {
+    const { selected_picture, current_set_pictures } = this.props;
+
     return (
-      <div
-        style={this.timersContainerStyle()}
-        className="timers-container">
-        <div
-          style={this.timersScrollStyle()}
-          className="timers-scroll">
-          {this.renderTimers()}
+      <div className="timers-container">
+        <div className="timers-scroll">
+          <Timer current_set_pictures={current_set_pictures} id={selected_picture}/>
         </div>
       </div>
     );
@@ -65,13 +28,16 @@ function matchDispatchToProps(dispatch) {
 const selector = createSelector(
   state => state['carousel'],
   state => state['timers_scroll'],
+  state => state['selected_picture'],
   (
     carousel,
-    timers_scroll
+    timers_scroll,
+    selected_picture
 ) => {
     return  {
       carousel,
-      timers_scroll
+      timers_scroll,
+      selected_picture
     };
   }
 );

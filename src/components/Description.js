@@ -8,7 +8,7 @@ class Description extends Component {
 
     this.state = {
       changing: false,
-      differed_selected_picture: ''
+      desync_selected_picture: ''
     }
   }
 
@@ -16,20 +16,21 @@ class Description extends Component {
     const { selected_picture } = this.props;
 
     this.setState({
-      differed_selected_picture: selected_picture,
+      desync_selected_picture: selected_picture,
     });
   }
 
   componentDidUpdate(prevProps) {
     const { selected_picture } = this.props;
     if (prevProps.selected_picture !== selected_picture) {
+      this.timeout && clearTimeout(this.timeout);
       this.setState({changing: true})
-      setTimeout(() => {
+      this.timeout = setTimeout(() => {
         this.setState({
-          differed_selected_picture: selected_picture,
+          desync_selected_picture: selected_picture,
           changing: false
         });
-      }, 500);
+      }, 600);
     }
   }
 
@@ -77,16 +78,12 @@ class Description extends Component {
 
   render() {
     const { current_set_pictures } = this.props;
-    const { differed_selected_picture } = this.state;
+    const { desync_selected_picture, changing } = this.state;
     return (
       <div
-        style={this.picturesPartStyle()}
-        className="lower-low-pictures">
-        <div
-          className="description"
-          style={this.descriptionStyle()}>
-          {current_set_pictures[differed_selected_picture] && current_set_pictures[differed_selected_picture].description}
-        </div>
+        style={this.descriptionStyle()}
+        className="description">
+        {current_set_pictures[desync_selected_picture] && current_set_pictures[desync_selected_picture].description}
       </div>
     );
   }

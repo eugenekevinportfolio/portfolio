@@ -71,7 +71,7 @@ class Tab extends Component {
           style={this.selectorStyle()}
           className="tab"
           onClick={() => {
-            this.props.selectTab(id)
+            this.props.selectTab(id);
             if (id === "home" && current_tab === "home") {
               const first_intro_dom = document.getElementById("first-intro");
               this.props.introFocus(Object.keys(intros)[0]);

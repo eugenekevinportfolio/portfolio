@@ -61,12 +61,6 @@ class Chapters extends Component {
           <p className="title">
             {covers[selected_cover].title}
           </p>
-          {/* <div>
-            <img src={facebook} className="share-icon" alt="Facebook" />
-            <img src={twitter} className="share-icon" alt="Twitter" />
-            <img src={mail} className="share-icon" alt="Mail" />
-            <img src={copy} className="share-icon" alt="Copy" />
-          </div> */}
           <div className="chapter-names">
             {this.renderChapterNames()}
           </div>

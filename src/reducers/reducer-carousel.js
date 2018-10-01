@@ -17,8 +17,8 @@ const initialState = {
   isAutoPlay: true,
   isOpen: false,
   sets: {
-    [uniqueId('set-')]: {
-      parent: "moment-9",
+    "set-1": {
+      parent: "moment-1",
       pictures: {
         [uniqueId('picture-')]: {
           src: oko,
@@ -41,7 +41,7 @@ const initialState = {
         [uniqueId('picture-')]: {
           src: expedition,
           title: "Night Expedition",
-          location: "Toshima, Tokyo",
+          location: "Harajuku, Tokyo",
           description: "One of my many night expeditions. I used to love wandering with no purpose at night in the empty streets of Tokyo. Also, since the konbinis were open 24 hours a day, I would always grab a snack or drink whenever I felt the need."
         },
         [uniqueId('picture-')]: {
@@ -70,8 +70,8 @@ const initialState = {
         },
       }
     },
-    [uniqueId('set-')]: {
-      parent: "moment-10",
+    "set-2": {
+      parent: "moment-2",
       pictures: {
         [uniqueId('picture-')]: {
           src: kago,

@@ -3,10 +3,8 @@ import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import { bindActionCreators } from 'redux';
 import {
-  movePictures,
   selectPicture,
   enterCarousel,
-  autoPlay,
   fullScreenImage
 } from '../actions/index.js';
 import '../styles/Pictures.css';
@@ -38,14 +36,7 @@ class Picture extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { id, selected_picture, pictures_scroll, selected_moment } = this.props;
-    const picture_left = this.picture.getBoundingClientRect().left;
-    // Move pictures inside the carousel
-    if (prevProps.selected_picture !== selected_picture) {
-      if (id === selected_picture) {
-        this.props.movePictures(pictures_scroll.pictures_left - picture_left);
-      }
-    }
+    const { selected_moment } = this.props;
 
     // When the carousel is closed, trigger animation to load new images when moment is changed
     if (prevProps.selected_moment !== selected_moment) {
@@ -56,13 +47,30 @@ class Picture extends Component {
   pictureStyle() {
     const { carousel, id, selected_picture, current_set_pictures_ids } = this.props;
     const { updating_picture, moved_picture } = this.state;
-    let id_number = current_set_pictures_ids.indexOf(id);
+    const id_number = current_set_pictures_ids.indexOf(id);
+    const last_id = current_set_pictures_ids[current_set_pictures_ids.length - 1];
 
     if (carousel.isOpen) {
-      if (id === selected_picture) {
-        return {
-          opacity: 1,
-          transitionDuration: 0.8 + "s",
+      if (id === last_id) {
+        if (id === selected_picture) {
+          return {
+            opacity: 1,
+            transitionDuration: 0.8 + "s",
+            marginRight: 970
+          }
+        }
+        else {
+          return {
+            marginRight: 970
+          }
+        }
+      }
+      else {
+        if (id === selected_picture) {
+          return {
+            opacity: 1,
+            transitionDuration: 0.8 + "s",
+          }
         }
       }
     }
@@ -75,7 +83,7 @@ class Picture extends Component {
       else if (updating_picture && moved_picture) {
         return {
           opacity: 0,
-          top: -80
+          transform: "translateY(-75px)"
         }
       }
       else if (!updating_picture) {
@@ -92,22 +100,22 @@ class Picture extends Component {
     const { id, carousel, selected_picture, current_set_pictures_ids } = this.props;
     return (
       <div
-        onClick={() => {
-          if (carousel.isOpen && id !== selected_picture) {
-            this.props.selectPicture(id);
-          }
-          else if (carousel.isOpen && id === selected_picture) {
-            this.props.fullScreenImage(differed_img, true);
-            this.props.autoPlay(false);
-          }
-          else if (!carousel.isOpen) {
-            this.props.autoPlay(true);
-            this.props.enterCarousel(true);
-            setTimeout(() => {
-              this.props.selectPicture(current_set_pictures_ids[0])
-            }, 700)
-          }
-        }}
+        // onClick={() => {
+        //   if (carousel.isOpen && id !== selected_picture) {
+        //     this.props.selectPicture(id);
+        //   }
+        //   else if (carousel.isOpen && id === selected_picture) {
+        //     this.props.fullScreenImage(differed_img, true);
+        //     this.props.autoPlay(false);
+        //   }
+        //   else if (!carousel.isOpen) {
+        //     this.props.autoPlay(true);
+        //     this.props.enterCarousel(true);
+        //     setTimeout(() => {
+        //       this.props.selectPicture(current_set_pictures_ids[0])
+        //     }, 700)
+        //   }
+        // }}
         ref={(picture) => this.picture = picture}
         className="picture"
         style={this.pictureStyle()}
@@ -120,10 +128,8 @@ class Picture extends Component {
 
 function matchDispatchToProps(dispatch) {
   return bindActionCreators({
-    movePictures,
     selectPicture,
     enterCarousel,
-    autoPlay,
     fullScreenImage
   }, dispatch)
 }
