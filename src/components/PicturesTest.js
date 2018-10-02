@@ -17,7 +17,7 @@ class PicturesTest extends Component {
     super(props);
 
     this.state = {
-      desync_pictures: '',
+      desync_pictures: ''
     }
   }
 
@@ -37,7 +37,7 @@ class PicturesTest extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { carousel, selected_moment } = this.props;
+    const { carousel, selected_moment, window_dimensions } = this.props;
 
     const sets_keys = Object.keys(carousel.sets);
     let current_set = {};
@@ -54,6 +54,7 @@ class PicturesTest extends Component {
         });
       }, 600)
     }
+
   }
 
   renderPictures() {
@@ -82,14 +83,14 @@ class PicturesTest extends Component {
         }
       }
     }
-    // else {
-    //   if (!carousel.isOpen) {
-    //     return {
-    //       transform: "translateY(90)",
-    //       opacity: 0
-    //     }
-    //   }
-    // }
+    else {
+      if (!carousel.isOpen) {
+        return {
+          marginTop: 500,
+          opacity: 0
+        }
+      }
+    }
   }
 
   picturesStyle() {
@@ -104,10 +105,10 @@ class PicturesTest extends Component {
   }
 
   handleScroll() {
-    const { selected_picture } = this.props;
+    const { selected_picture, window_dimensions } = this.props;
     const { desync_pictures } = this.state;
     const current_set_pictures_ids = Object.keys(desync_pictures);
-    const page_threshold = 130;
+    const page_threshold = window_dimensions.isDesktop ? 130 : -90;
     const pictures_array = document.getElementsByClassName("picture");
     const pictures_left = [];
     for (let i = 0; i < pictures_array.length; i++) {

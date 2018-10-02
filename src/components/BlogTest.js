@@ -15,6 +15,31 @@ import light_back from '../img/LightBack.png';
 import dark_back_up from '../img/Back_Up.png';
 
 class BlogTest extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      desync_carousel_open: false
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const { carousel } = this.props;
+
+    if (!prevProps.carousel.isOpen && carousel.isOpen) {
+      this.setState({
+        desync_carousel_open: carousel.isOpen
+      });
+    }
+    else if (prevProps.carousel.isOpen && !carousel.isOpen) {
+      setTimeout(() => {
+        this.setState({
+          desync_carousel_open: carousel.isOpen
+        });
+      }, 600)
+    }
+  }
+
   renderMoments() {
     const { moments } = this.props;
 
@@ -135,13 +160,14 @@ class BlogTest extends Component {
   }
 
   renderPictures() {
-    const { window_dimensions, carousel } = this.props;
+    const { window_dimensions } = this.props;
+    const { desync_carousel_open } = this.state;
 
     if (window_dimensions.isDesktop) {
       return <PicturesTest />
     }
     else {
-      if (carousel.isOpen) {
+      if (desync_carousel_open) {
         return <PicturesTest />
       }
     }

@@ -13,7 +13,7 @@
     transform: translateY(135px);
   }
 
-  .cover-title, .mobile-article-title {
+  .cover-title {
     font-size: 30px;
   }
 
@@ -22,8 +22,8 @@
     /* width: 70%; */
   }
 
-  .cover-date, .mobile-article-date {
-    font-size: 13px;
+  .cover-date {
+    font-size: 14px;
   }
 
   .cover-links {
@@ -71,7 +71,7 @@
   }
 
   .cover-title {
-    font-size: 30px;
+    font-size: 32px;
   }
 
   .cover-description {
@@ -80,7 +80,7 @@
   }
 
   .cover-date {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .cover-links {

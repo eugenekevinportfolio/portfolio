@@ -1,13 +1,13 @@
 @media screen and (max-width: 449px) {
   .moment-date p {
-    font-size: 13px;
+    font-size: 14px;
     margin: 0;
   }
 
   .moment-title {
     margin: 0;
     margin-bottom: 15px;
-    font-size: 30px;
+    font-size: 27px;
     text-align: center;
   }
 
@@ -63,7 +63,7 @@
   .moment-title {
     margin: 0;
     margin-bottom: 15px;
-    font-size: 35px;
+    font-size: 32px;
     text-align: center;
   }
 
@@ -119,7 +119,7 @@
   .moment-title {
     margin: 0;
     margin-bottom: 15px;
-    font-size: 35px;
+    font-size: 32px;
     text-align: center;
   }
 

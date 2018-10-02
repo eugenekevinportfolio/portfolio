@@ -45,10 +45,11 @@ class Picture extends Component {
   }
 
   pictureStyle() {
-    const { carousel, id, selected_picture, current_set_pictures_ids } = this.props;
+    const { carousel, id, selected_picture, current_set_pictures_ids, window_dimensions } = this.props;
     const { updating_picture, moved_picture } = this.state;
     const id_number = current_set_pictures_ids.indexOf(id);
     const last_id = current_set_pictures_ids[current_set_pictures_ids.length - 1];
+    const margin_right = window_dimensions.isDesktop ? 970 : 1229;
 
     if (carousel.isOpen) {
       if (id === last_id) {
@@ -56,12 +57,12 @@ class Picture extends Component {
           return {
             opacity: 1,
             transitionDuration: 0.8 + "s",
-            marginRight: 970
+            marginRight: margin_right
           }
         }
         else {
           return {
-            marginRight: 970
+            marginRight: margin_right
           }
         }
       }
@@ -139,17 +140,20 @@ const selector = createSelector(
   state => state['carousel'],
   state => state['selected_picture'],
   state => state['pictures_scroll'],
+  state => state['window'],
   (
     selected_moment,
     carousel,
     selected_picture,
-    pictures_scroll
+    pictures_scroll,
+    window_dimensions
 ) => {
     return  {
       selected_moment,
       carousel,
       selected_picture,
-      pictures_scroll
+      pictures_scroll,
+      window_dimensions
     };
   }
 );
