@@ -1,8 +1,8 @@
-@media screen and (max-width: 809px) {
+@media screen and (max-width: 449px) {
   .picture-name {
     display: inline-block;
     margin: 0;
-    font-size: 22px;
+    font-size: 25px;
     margin-right: 13px;
     transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   }
@@ -21,6 +21,37 @@
     transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
     height: 50px;
     width: 340px;
+    font-size: 15px;
+  }
+
+  .timer {
+    width: 300px;
+  }
+}
+
+@media screen and (min-width: 450px) and (max-width: 809px) {
+  .picture-name {
+    display: inline-block;
+    margin: 0;
+    font-size: 27px;
+    margin-right: 13px;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+
+  .picture-location {
+    display: inline-block;
+    margin: 0;
+    font-size: 16px;
+    opacity: 0.5;
+    height: auto;
+    margin-right: 50px;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+
+  .description {
+    transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    height: 50px;
+    width: 440px;
     font-size: 15px;
   }
 }
