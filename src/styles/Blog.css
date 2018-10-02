@@ -1,13 +1,13 @@
-@media screen and (max-width: 809px) {
+@media screen and (max-width: 449px) {
   .moment-date p {
     font-size: 13px;
     margin: 0;
   }
 
-  .moment h1 {
+  .moment-title {
     margin: 0;
     margin-bottom: 15px;
-    font-size: 26px;
+    font-size: 27px;
     text-align: center;
   }
 
@@ -23,8 +23,56 @@
     padding-right: 20px;
   }
 
-  .blog p {
+  .blog-top-arrow {
+    width: 25px;
+    cursor: default;
+    position: fixed;
+    bottom: 30px;
+    left: calc(50% - 12.5px);
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .moments-container {
+    width: 300px;
+    flex-shrink: 0;
+    padding-top: 85px;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+    transition: transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1), opacity 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+
+  .moment-paragraph {
+    margin: 0;
+    font-size: 14px;
+    text-align: justify;
+  }
+}
+
+@media screen and (min-width: 450px) and (max-width: 809px) {
+  .moment-date p {
+    font-size: 16px;
+    margin: 0;
+  }
+
+  .moment-title {
+    margin: 0;
+    margin-bottom: 15px;
+    font-size: 40px;
     text-align: center;
+  }
+
+  .start p {
+    font-size: 16px;
+  }
+
+  .blog {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   .blog-top-arrow {
@@ -43,7 +91,14 @@
     flex-shrink: 0;
     padding-top: 100px;
     overflow: scroll;
+    -webkit-overflow-scrolling: touch;
     transition: transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1), opacity 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+
+  .moment-paragraph {
+    margin: 0;
+    font-size: 15px;
+    text-align: justify;
   }
 }
 
@@ -53,10 +108,10 @@
     margin: 0;
   }
 
-  .moment h1 {
+  .moment-title {
     margin: 0;
     margin-bottom: 15px;
-    font-size: 35px;
+    font-size: 40px;
     text-align: center;
   }
 
@@ -77,7 +132,14 @@
     padding-top: 150px;
     padding-left: 110px;
     overflow: auto;
+    -webkit-overflow-scrolling: touch;
     transition: all 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+
+  .moment-paragraph {
+    margin: 0;
+    font-size: 15px;
+    text-align: justify;
   }
 }
 
@@ -107,10 +169,6 @@
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
-.moment h1, .blog h1 {
-  font-weight: 600;
-}
-
 #last-moment {
   margin-bottom: 230px;
 }
@@ -121,12 +179,6 @@
   align-items: center;
   margin-bottom: 15px;
   transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-
-.moment p {
-  margin: 0;
-  font-size: 15px;
-  text-align: justify;
 }
 
 .moment-date {

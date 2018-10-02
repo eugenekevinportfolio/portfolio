@@ -1,12 +1,12 @@
 @media screen and (max-width: 449px) {
   .cover {
     width: 240px;
-    margin-right: 35px;
+    margin-right: 70px;
   }
 
   .concepts-horizontal-scroll {
     padding-left: calc(50% - 120px);
-    padding-right: calc(50% - 120px - 35px);
+    padding-right: calc(50% - 120px - 70px);
   }
 
   .concept-selector {
@@ -14,7 +14,7 @@
   }
 
   .cover-title, .mobile-article-title {
-    font-size: 26px;
+    font-size: 30px;
   }
 
   .cover-description {
@@ -234,7 +234,7 @@
   }
 
   .article-title {
-    font-size: 35px;
+    font-size: 40px;
     margin-top: 30px;
     margin-bottom: 20px;
   }

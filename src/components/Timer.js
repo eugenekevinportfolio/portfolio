@@ -44,11 +44,11 @@ class Timer extends Component {
         ref={(timer) => this.timer = timer}
         className="timer">
         <div className="above-timer">
-          <h1
+          <p
             style={dark_mode ? {color: "white"} : {}}
             className="picture-name">
-            {current_set_pictures[desync_selected_picture] && current_set_pictures[desync_selected_picture].title.toUpperCase()}
-          </h1>
+            {current_set_pictures[desync_selected_picture] && current_set_pictures[desync_selected_picture].title}
+          </p>
           <p
             style={dark_mode ? {color: "white"} : {}}
             className="picture-location">

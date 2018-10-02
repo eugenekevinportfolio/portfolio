@@ -139,11 +139,11 @@ class PicturesTest extends Component {
         <div
           style={carousel.isOpen ? {} : {transitionDelay: "0s", opacity: 0}}
           className="top-pictures">
-          <h1
+          <p
             style={dark_mode ? {color: "white"} : {}}
             className="diapo-title">
-            {current_moment.title.toUpperCase()}
-          </h1>
+            {current_moment.title}
+          </p>
         </div>
         <div className="pictures-middle-part">
           <div

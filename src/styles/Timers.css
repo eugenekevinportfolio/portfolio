@@ -4,6 +4,7 @@
     margin: 0;
     font-size: 20px;
     margin-right: 15px;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   }
 
   .picture-location {
@@ -13,10 +14,11 @@
     opacity: 0.5;
     height: auto;
     margin-right: 50px;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   }
 
   .description {
-    transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
     height: 50px;
     width: 340px;
     font-size: 15px;
@@ -27,12 +29,14 @@
   .picture-name {
     display: inline-block;
     margin: 0;
-    font-size: 25px;
+    font-size: 27px;
     margin-right: 15px;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   }
 
   .picture-location {
     display: inline-block;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
     margin: 0;
     font-size: 15px;
     opacity: 0.5;
@@ -41,9 +45,10 @@
   }
 
   .description {
-    transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
     height: 50px;
     width: 700px;
+    font-size: 15px;
   }
 }
 

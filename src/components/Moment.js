@@ -66,10 +66,14 @@ class Moment extends Component {
         <div
           style={dark_mode ? {borderColor: "white"} : {}}
           className="moment">
-          <h1 style={dark_mode ? {color: "white"} : {}}>
-            {title.toUpperCase()}
-          </h1>
-          <p style={dark_mode ? {color: "white"} : {}}>
+          <p
+            className="moment-title"
+            style={dark_mode ? {color: "white"} : {}}>
+            {title}
+          </p>
+          <p
+            className="moment-paragraph"
+            style={dark_mode ? {color: "white"} : {}}>
             {paragraph}
           </p>
         </div>
