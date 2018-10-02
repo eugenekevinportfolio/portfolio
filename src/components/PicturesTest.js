@@ -8,7 +8,9 @@ import TimersContainer from './TimersContainer.js';
 import Description from './Description.js';
 import {
   selectPicture,
+  enterCarousel
 } from '../actions/index.js';
+import dark_back_up from '../img/Back_Up.png';
 
 class PicturesTest extends Component {
   constructor(props) {
@@ -121,8 +123,44 @@ class PicturesTest extends Component {
     id_to_focus !== selected_picture && this.props.selectPicture(id_to_focus);
   }
 
+  mobileBackdownStyle() {
+    const { dark_mode, carousel } = this.props;
+
+    if (dark_mode) {
+      if (carousel.isOpen) {
+        return {
+          transitionDelay: "0.5s",
+          borderColor: "white",
+          pointerEvents: "auto",
+        }
+      }
+      else {
+        return {
+          transform: "scale(0.7)",
+          opacity: 0,
+          borderColor: "white"
+        }
+      }
+    }
+    else {
+      if (carousel.isOpen) {
+        return {
+          transitionDelay: "0.5s",
+          pointerEvents: "auto",
+        }
+      }
+      else {
+        return {
+          transform: "scale(0.7)",
+          opacity: 0
+        }
+      }
+    }
+  }
+
+
   render() {
-    const { moments, selected_moment, carousel, dark_mode } = this.props;
+    const { moments, selected_moment, carousel, dark_mode, window_dimensions } = this.props;
     const current_moment = moments[selected_moment];
     const sets_keys = Object.keys(carousel.sets);
     let current_set = {};
@@ -139,10 +177,21 @@ class PicturesTest extends Component {
         <div
           style={carousel.isOpen ? {} : {transitionDelay: "0s", opacity: 0}}
           className="top-pictures">
+          {window_dimensions.isMobile &&
+            <div
+              onClick={() => {
+                this.props.enterCarousel(false);
+                this.props.selectPicture("");
+              }}
+              style={this.mobileBackdownStyle()}
+              className="mobile-back-down-button-pictures">
+              <img src={dark_back_up} className="back-down-img" />
+            </div>
+          }
           <p
             style={dark_mode ? {color: "white"} : {}}
             className="diapo-title">
-            {current_moment.title}
+            {current_moment.title.toUpperCase()}
           </p>
         </div>
         <div className="pictures-middle-part">
@@ -170,7 +219,8 @@ class PicturesTest extends Component {
 
 function matchDispatchToProps(dispatch) {
   return bindActionCreators({
-    selectPicture
+    selectPicture,
+    enterCarousel
   }, dispatch)
 }
 

@@ -69,7 +69,7 @@ class Moment extends Component {
           <p
             className="moment-title"
             style={dark_mode ? {color: "white"} : {}}>
-            {title}
+            {title.toUpperCase()}
           </p>
           <p
             className="moment-paragraph"

@@ -147,48 +147,13 @@ class BlogTest extends Component {
     }
   }
 
-  mobileBackdownStyle() {
-    const { dark_mode, carousel } = this.props;
-
-    if (dark_mode) {
-      if (carousel.isOpen) {
-        return {
-          transitionDelay: "0.5s",
-          borderColor: "white",
-          pointerEvents: "auto",
-        }
-      }
-      else {
-        return {
-          transform: "scale(0.7)",
-          opacity: 0,
-          borderColor: "white"
-        }
-      }
-    }
-    else {
-      if (carousel.isOpen) {
-        return {
-          transitionDelay: "0.5s",
-          pointerEvents: "auto",
-        }
-      }
-      else {
-        return {
-          transform: "scale(0.7)",
-          opacity: 0
-        }
-      }
-    }
-  }
-
   render() {
     const { window_dimensions, dark_mode } = this.props;
     const arrow = dark_mode ? light_back : back;
 
     return (
       <div className="blog">
-        {window_dimensions.isDesktop ?
+        {window_dimensions.isDesktop &&
           <div>
             <p
               style={this.leftStyle()}
@@ -206,15 +171,6 @@ class BlogTest extends Component {
               className="back-button">
               <img src={arrow} className="back" alt="back" />
             </div>
-          </div>
-          :
-          <div
-            onClick={() => {
-              this.props.enterCarousel(false);
-            }}
-            style={this.mobileBackdownStyle()}
-            className="mobile-back-down-button-pictures">
-            <img src={dark_back_up} className="back-down-img" />
           </div>
         }
         <div

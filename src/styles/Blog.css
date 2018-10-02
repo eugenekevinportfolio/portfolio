@@ -7,7 +7,7 @@
   .moment-title {
     margin: 0;
     margin-bottom: 15px;
-    font-size: 27px;
+    font-size: 30px;
     text-align: center;
   }
 
@@ -35,7 +35,7 @@
   }
 
   .moments-container {
-    width: 300px;
+    width: 335px;
     flex-shrink: 0;
     padding-top: 85px;
     overflow: scroll;
@@ -45,8 +45,12 @@
 
   .moment-paragraph {
     margin: 0;
-    font-size: 14px;
+    font-size: 15px;
     text-align: justify;
+  }
+
+  #last-moment {
+    margin-bottom: 300px;
   }
 }
 
@@ -59,7 +63,7 @@
   .moment-title {
     margin: 0;
     margin-bottom: 15px;
-    font-size: 40px;
+    font-size: 35px;
     text-align: center;
   }
 
@@ -100,6 +104,10 @@
     font-size: 15px;
     text-align: justify;
   }
+
+  #last-moment {
+    margin-bottom: 250px;
+  }
 }
 
 @media screen and (min-width: 810px) {
@@ -111,7 +119,7 @@
   .moment-title {
     margin: 0;
     margin-bottom: 15px;
-    font-size: 40px;
+    font-size: 35px;
     text-align: center;
   }
 
@@ -141,6 +149,10 @@
     font-size: 15px;
     text-align: justify;
   }
+
+  #last-moment {
+    margin-bottom: 230px;
+  }
 }
 
 .blog {
@@ -167,10 +179,6 @@
   width: 100%;
   margin-bottom: 15px;
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-
-#last-moment {
-  margin-bottom: 230px;
 }
 
 .moment-container {
@@ -230,9 +238,9 @@
 }
 
 .mobile-back-down-button-pictures {
-  position: fixed;
+  /* position: fixed;
   top: 90px;
-  left: calc(50% - 17.5px);
+  left: calc(50% - 17.5px); */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -244,6 +252,8 @@
   transition: transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1), opacity 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
   opacity: 0.8;
   z-index: 1000;
+  margin-right: 15px;
+  margin-top: -4px;
 }
 
 /* .pictures-control {
