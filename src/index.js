@@ -9,12 +9,12 @@ import allReducers from "./reducers/index.js";
 import thunk from "redux-thunk";
 import { logger } from "redux-logger";
 
-const middleware = applyMiddleware(thunk, logger);
+// const middleware = applyMiddleware(thunk, logger);
 // DEV
-const store = createStore(allReducers, middleware);
+// const store = createStore(allReducers, middleware);
 
 // PRODUCTION
-// const store = createStore(allReducers);
+const store = createStore(allReducers);
 
 ReactDOM.render(
   <Provider store={store}>
