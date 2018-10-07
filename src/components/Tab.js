@@ -13,36 +13,20 @@ import {
 
 class Tab extends Component {
   selectorStyle() {
-    const { id, current_tab, dark_mode, home_finished } = this.props;
+    const { id, current_tab, dark_mode } = this.props;
     if (dark_mode) {
-      if (home_finished) {
-        if (current_tab === id) {
-          return {
-            backgroundColor: "white",
-            color: "black"
-          }
-        }
-      }
-      else {
+      if (current_tab === id) {
         return {
-          opacity: 0,
-          pointerEvents: "none"
+          backgroundColor: "white",
+          color: "black"
         }
       }
     }
     else {
-      if (home_finished) {
-        if (current_tab === id) {
-          return {
-            backgroundColor: "black",
-            color: "white"
-          }
-        }
-      }
-      else {
+      if (current_tab === id) {
         return {
-          opacity: 0,
-          pointerEvents: "none"
+          backgroundColor: "black",
+          color: "white"
         }
       }
     }
